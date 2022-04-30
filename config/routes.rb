@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'bookings/create'
+  get 'bookings/update'
+  get 'pokemons/index'
+  get 'pokemons/show'
+  get 'pokemons/new'
+  get 'pokemons/create'
   devise_for :users
   root to: 'pages#home'
   get 'dashboard', to: 'pages#dashboard'
