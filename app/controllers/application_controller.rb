@@ -8,6 +8,6 @@ class ApplicationController < ActionController::Base
   end
 
   def user_params
-    %i[username].freeze
+    %i[username city address phone_number email].freeze
   end
 end
