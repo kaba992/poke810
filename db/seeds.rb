@@ -17,6 +17,5 @@ puts 'création'
                   speed: rand(1..5), hp: rand(1..255), price: rand(10..500), user_id: 1)
                   p pokemon.name
 
-
 end
 puts 'fin'
