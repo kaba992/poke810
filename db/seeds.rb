@@ -24,7 +24,6 @@ url = 'https://pokeapi.co/api/v2/pokemon?limit=2&offset=0'
 pokemons_serialized = URI.open(url).read
 pokemons = JSON.parse(pokemons_serialized)['results']
 pokemons.each do |pokemon|
-  p pokemon
   url = "#{pokemon['url']}"
 pokemon_serialized = URI.open(url).read
 pokemont = JSON.parse(pokemon_serialized)
