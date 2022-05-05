@@ -9,6 +9,7 @@ class CreatePokemonbases < ActiveRecord::Migration[6.1]
       t.integer :defense
       t.integer :speed
       t.integer :hp
+      t.text :image_url
 
       t.timestamps
     end

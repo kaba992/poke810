@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 2022_05_05_181537) do
     t.integer "defense"
     t.integer "speed"
     t.integer "hp"
+    t.text "image_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
