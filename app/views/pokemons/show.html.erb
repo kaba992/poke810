@@ -1,2 +1,14 @@
 <h1>Pokemons#show</h1>
 <p>Find me in app/views/pokemons/show.html.erb</p>
+<div>
+<li>nom :<%= @pokemon.name  %></li>
+<li>description :<%= @pokemon.description %></li>
+<li>attack :<%= @pokemon.attack  %></li>
+<li>defense :<%= @pokemon.defense  %></li>
+</div>
+
+<%= simple_form_for [ @pokemon, @booking ] do |f| %>
+  <%= f.input :start_date %>
+  <%= f.input :end_date %>
+  <%= f.submit "Réserver", class: "btn btn-primary" %>
+<% end %>
