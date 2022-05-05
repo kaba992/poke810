@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   validates :username, presence: true, uniqueness: true
   has_many :bookings
-  has_many :pokemons, through: :bookings, as: :pokemons_reserved
   has_many :pokemons
+  has_many :bookings_owner, through: :pokemons, source: :bookings
+  has_many :pokemons_reserved, through: :bookings, source: :pokemon
 end
