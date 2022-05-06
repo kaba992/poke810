@@ -19,21 +19,24 @@
 
 # end
 # puts 'fin'
+Pokemonbase.destroy_all
 # Debut de la seed
-url = 'https://pokeapi.co/api/v2/pokemon?limit=2&offset=0'
+url = 'https://pokeapi.co/api/v2/pokemon?limit=1&offset=0'
 pokemons_serialized = URI.open(url).read
 pokemons = JSON.parse(pokemons_serialized)['results']
 pokemons.each do |pokemon|
-  p pokemon
   url = "#{pokemon['url']}"
 pokemon_serialized = URI.open(url).read
+
 pokemont = JSON.parse(pokemon_serialized)
- p Pokemonbase.create!(name: pokemon['name'],
+
+
+ Pokemonbase.create!(name: pokemon['name'],
                       types: pokemont['types'].map { |type| type['type']['name']},
                       abilities: pokemont['abilities'].map { |ability| ability['ability']['name'] },
                       attack: pokemont['stats'].find { |stat| stat['stat']['name'] == 'attack' }['base_stat'],
                       defense: pokemont['stats'].find { |stat| stat['stat']['name'] == 'defense' }['base_stat'],
                       speed: pokemont['stats'].find { |stat| stat['stat']['name'] == 'speed' }['base_stat'],
-                      hp: pokemont['stats'].find { |stat| stat['stat']['name'] == 'hp' }['base_stat'],image_url: pokemont['sprites']['front_default'])
+                      hp: pokemont['stats'].find { |stat| stat['stat']['name'] == 'hp' }['base_stat'],image_url: pokemont['sprites']['other']['dream_world']['front_default'])
 end
 # Fin de la seed
