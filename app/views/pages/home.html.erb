@@ -4,10 +4,10 @@
 
 <h3>Les plus demandés</h3>
 <% @pokemons.each do |pokemon| %>
- <div> <%= link_to pokemon.name, pokemon_path(pokemon) %> </div>
+ <div class = 'pokemon-card'> <%= link_to pokemon.name, pokemon_path(pokemon) %>
+
+ </div>
 <% end %>
-
-
 
 les plus puissants
 <%pokemon_powerful = @pokemons.order(attack: :desc).limit(5)%>
@@ -21,4 +21,3 @@ les moins chers
 <% pokemon_cheaper.each do |p| %>
 <%= p.name %> <%=image_tag p.image_url, alt: p.name if p.image_url != nil%>
 <% end %>
-

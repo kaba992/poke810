@@ -10,3 +10,12 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+
+.search {
+  justify-content: flex-start;
+  width: 100%;
+  form {
+    width: 50%;
+    display: flex;
+  }
+}
