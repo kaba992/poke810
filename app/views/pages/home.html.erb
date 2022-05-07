@@ -2,8 +2,9 @@
 <p>Find me in app/views/pages/home.html.erb</p>
 <h2>Louer vos pokemons préférés pour une semaine, un week-end ...</h2>
 
-<div>
+
   <h3>Les plus demandés</h3>
+<div class="cards-home">
   <% pokemon_asked = @pokemons.order(id: :desc).limit(5) %>
   <% pokemon_asked.each do |pokemon| %>
     <%= link_to pokemon_path(pokemon) do %>
@@ -19,8 +20,8 @@
   <% end %>
 </div>
 
-<div>
-  <h3>les plus puissants</h3>
+<h3>les plus puissants</h3>
+<div class='cards-home'>
   <%pokemon_powerful = @pokemons.order(attack: :desc).limit(5)%>
   <% pokemon_powerful.each do |pokemon| %>
     <%= link_to pokemon_path(pokemon) do %>
@@ -35,8 +36,8 @@
     <% end%>
   <% end %>
 </div>
-
 <h3>les moins chers</h3>
+<div class="cards-home">
 <%pokemon_cheaper = @pokemons.order(:price).limit(5)%>
 <% pokemon_cheaper.each do |pokemon| %>
     <%= link_to pokemon_path(pokemon) do %>
@@ -50,3 +51,4 @@
       </div>
     <% end%>
 <% end %>
+</div>
