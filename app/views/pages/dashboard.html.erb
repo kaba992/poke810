@@ -10,7 +10,7 @@
 <h2>Mes pokemons - owner</h2>
 <%= link_to 'add a pokemon', new_pokemon_path %>
 <% @pokemons_owner.each do |pokemon| %>
-  <div><%= pokemon.name %></div>
+  <div><%=link_to pokemon.name, pokemon_path(pokemon) %></div>
 <% end %>
 
 <h2>Mes réservations - owner</h2>
