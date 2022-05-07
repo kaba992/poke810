@@ -11,10 +11,12 @@ import "channels"
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
-
+import $ from 'jquery'
+import {select2 }from 'select2'
 import "controllers"
 import "bootstrap"
+document.addEventListener("turbolinks:load", () => {
 
-$(document).ready(function() {
   $('.js-example-basic-single').select2();
+
 });
