@@ -2,10 +2,16 @@
 <p>Find me in app/views/pokemons/new.html.erb</p>
 <div class="container">
   <%= simple_form_for(@pokemon) do |f| %>
-    <%= f.input :name, prompt: "Choose a pokemon"%>
+    <%= f.input :name, :collection => @pokemons.order(:name), prompt: "Choose a pokemon"%>
     <%= f.input :description%>
     <%= f.input :price %>
-
     <%= f.submit "Submit new pokemon", class: "morph_button" %>
+
+    <select class="js-example-basic-single" name="state">
+
+    <option value="AL">Alabama</option>
+    ...
+    <option value="WY">Wyoming</option>
+</select>
   <% end %>
 </div>
