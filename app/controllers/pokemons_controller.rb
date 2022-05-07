@@ -23,7 +23,6 @@ class PokemonsController < ApplicationController
 
   def create
     @pokemon = Pokemon.new(pokemon_params)
-
     @pokebase = Pokemonbase.find(pokemon_params[:id].to_i)
     @pokemon.name = @pokebase.name
     @pokemon.attack = @pokebase.attack

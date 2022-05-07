@@ -3,7 +3,7 @@
     <%= link_to root_path, class: "navbar-brand" do %>
        <%= image_tag "pokeball.png" %>
 <% end %>
-
+<div class="search">
     <%= form_tag pokemons_path, method: :get do %>
     <%= text_field_tag :query,
     params[:query],
@@ -11,6 +11,7 @@
     placeholder: "Find a pokemon" %>
   <%= submit_tag "Search", class: "btn btn-primary" %>
     <% end %>
+</div>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
