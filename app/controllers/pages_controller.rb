@@ -17,5 +17,6 @@ class PagesController < ApplicationController
     @bookings_owner = current_user.bookings_owner
     @pokemons_booker = current_user.pokemons_reserved
     @pokemons_owner = current_user.pokemons
+
   end
 end

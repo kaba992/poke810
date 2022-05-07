@@ -1,4 +1,29 @@
-<h1>Mes réservations</h1>
+<h1> Mes locations (booker)</h1>
+
+<h2>Mes pokemons - booker</h2>
 <% @bookings_booker.each do |booking| %>
   <div><%= booking.pokemon.name %></div>
+  <div> <%= booking.start_date %> | <%= booking.end_date %> | <%= booking.status %> </div>
+<% end %>
+
+
+<h2>Mes pokemons - owner</h2>
+<%= link_to 'add a pokemon', new_pokemon_path %>
+<% @pokemons_owner.each do |pokemon| %>
+  <div><%= pokemon.name %></div>
+<% end %>
+
+<h2>Mes réservations - owner</h2>
+<% @bookings_owner.each do |booking| %>
+  <div><%= booking.pokemon.name %></div>
+  <div> <%= booking.start_date %> | <%= booking.end_date %> |
+  <% if booking.status == 'pending' %>
+    <%= simple_form_for(booking) do |f| %>
+      <%= f.input :status, collection: Booking::STATUS %>
+      <%= f.submit %>
+    <% end %>
+  <% else %>
+    <%= booking.status %>
+  <% end %>
+  </div>
 <% end %>
