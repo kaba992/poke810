@@ -7,10 +7,18 @@
  <div> <%= link_to pokemon.name, pokemon_path(pokemon) %> </div>
 <% end %>
 
-<h3>Les plus puissants</h3>
 
 
-<h3>Les plus gentils</h3>
+les plus puissants
+<%pokemon_powerful = @pokemons.order(attack: :desc).limit(5)%>
+<% pokemon_powerful.each do |p| %>
+<%= p.name %>
+<%=image_tag p.image_url, alt: p.name if p.image_url != nil%>
+<% end %>
 
+les moins chers
+<%pokemon_cheaper = @pokemons.order(:price).limit(5)%>
+<% pokemon_cheaper.each do |p| %>
+<%= p.name %> <%=image_tag p.image_url, alt: p.name if p.image_url != nil%>
+<% end %>
 
-<h3>Les moins chers</h3>
