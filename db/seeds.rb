@@ -4,24 +4,23 @@
 #
 # Examples:
 #
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-# Pokemon.destroy_all
 
-# puts 'création'
-# 10.times do
-
-#   pokemon = Pokemon.create!(name: Faker::Games::Pokemon.name, types: 'Electric', abilities: Faker::Games::Pokemon.move,
-#                   description: "The world’s most popular pokemon.",
-#                   attack: rand(1..10), defense: rand(1..5),
-#                   speed: rand(1..5), hp: rand(1..255), price: rand(10..500), user_id: 1)
-#                   p pokemon.name
-
-# end
-# puts 'fin'
 Pokemonbase.destroy_all
 # Debut de la seed
-url = 'https://pokeapi.co/api/v2/pokemon?limit=1&offset=0'
+require 'csv'
+file_path = "db/poketraduction.csv"
+pokelist = []
+CSV.foreach(file_path) do |row|
+ pokelist << row
+end
+french_name = {}
+official_id = {}
+pokelist.each do |poke|
+ french_name[poke[1].downcase] = poke[2]
+ official_id[poke[1].downcase] = poke[0].to_i
+end
+
+url = 'https://pokeapi.co/api/v2/pokemon?limit=500&offset=0'
 pokemons_serialized = URI.open(url).read
 pokemons = JSON.parse(pokemons_serialized)['results']
 pokemons.each do |pokemon|
@@ -31,7 +30,7 @@ pokemon_serialized = URI.open(url).read
 pokemont = JSON.parse(pokemon_serialized)
 
 
- Pokemonbase.create!(name: pokemon['name'],
+Pokemonbase.create!(name: french_name[pokemon['name']], official_id: official_id[pokemon['name']],
                       types: pokemont['types'].map { |type| type['type']['name']},
                       abilities: pokemont['abilities'].map { |ability| ability['ability']['name'] },
                       attack: pokemont['stats'].find { |stat| stat['stat']['name'] == 'attack' }['base_stat'],
