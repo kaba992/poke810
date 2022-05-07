@@ -23,7 +23,8 @@ class PokemonsController < ApplicationController
 
   def create
     @pokemon = Pokemon.new(pokemon_params)
-    @pokebase = Pokemonbase.find_by_name(@pokemon.name)
+    @pokebase = Pokemonbase.find(pokemon_params[:id].to_i)
+    @pokemon.name = @pokebase.name
     @pokemon.attack = @pokebase.attack
     @pokemon.defense = @pokebase.defense
     @pokemon.speed = @pokebase.speed
@@ -42,6 +43,6 @@ class PokemonsController < ApplicationController
   private
 
   def pokemon_params
-    params.require(:pokemon).permit(:name, :description, :price)
+    params.require(:pokemon).permit(:name, :description, :price, :id)
   end
 end

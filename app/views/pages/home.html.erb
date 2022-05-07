@@ -2,21 +2,25 @@
 <p>Find me in app/views/pages/home.html.erb</p>
 <h2>Louer vos pokemons préférés pour une semaine, un week-end ...</h2>
 
-<h3>Les plus demandés</h3>
-<% @pokemons.each do |pokemon| %>
- <div class = 'pokemon-card'> <%= link_to pokemon.name, pokemon_path(pokemon) %>
+<div>
+  <h3>Les plus demandés</h3>
+  <% pokemon_asked = @pokemons.order(id: :desc).limit(5) %>
+  <% pokemon_asked.each do |pokemon| %>
+  <%= link_to pokemon.name, pokemon_path(pokemon) if pokemon.image_url != nil%>
+  <%=image_tag pokemon.image_url, alt: pokemon.name if pokemon.image_url != nil%>
+  <% end %>
+</div>
 
- </div>
-<% end %>
+<div>
+  <h3>les plus puissants</h3>
+  <%pokemon_powerful = @pokemons.order(attack: :desc).limit(5)%>
+  <% pokemon_powerful.each do |p| %>
+  <%= p.name %>
+  <%=image_tag p.image_url, alt: p.name if p.image_url != nil%>
+  <% end %>
+</div>
 
-les plus puissants
-<%pokemon_powerful = @pokemons.order(attack: :desc).limit(5)%>
-<% pokemon_powerful.each do |p| %>
-<%= p.name %>
-<%=image_tag p.image_url, alt: p.name if p.image_url != nil%>
-<% end %>
-
-les moins chers
+<h3>les moins chers</h3>
 <%pokemon_cheaper = @pokemons.order(:price).limit(5)%>
 <% pokemon_cheaper.each do |p| %>
 <%= p.name %> <%=image_tag p.image_url, alt: p.name if p.image_url != nil%>
