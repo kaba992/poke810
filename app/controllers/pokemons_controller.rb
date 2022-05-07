@@ -2,7 +2,11 @@ class PokemonsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
-    @pokemons = Pokemon.all
+    if params[:query].present?
+      @pokemons = Pokemon.where("name ILIKE ?", "%#{params[:query]}%")
+    else
+      @pokemons = Pokemon.all
+    end
   end
 
   def show
