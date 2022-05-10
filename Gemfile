@@ -41,6 +41,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'dotenv-rails'
   gem 'poke-api-v2'
+  gem 'erb-formatter'
 gem 'faker', git: 'https://github.com/faker-ruby/faker.git', branch: 'master'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]

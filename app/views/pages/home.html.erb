@@ -1,54 +1,91 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
-<h2>Louer vos pokemons préférés pour une semaine, un week-end ...</h2>
+
+<div class="container-fluid">
+  <main data-barba="container" data-barba-namespace="home" class="container-fluid">
+    <h1>Pages#home</h1>
+    <p>Find me in app/views/pages/home.html.erb</p>
+    <h2>Louer vos pokemons préférés pour une semaine, un week-end ...</h2>
+
+        <h3>Les plus demandés</h3>
+          <div class="cards-home">
+        <% pokemon_asked = @pokemons.order(id: :desc).limit(5) %>
+        <% pokemon_asked.each do |pokemon| %>
+        <div class='pokemon-card'>
+            <div class="pokemon-img">
+                <%=image_tag pokemon.image_url, alt: pokemon.name if pokemon.image_url != nil%>
+            </div>
+
+          <div class='pokemon-infos'>
+              <h2 class='text-center font-weight-bold name'><%= pokemon.name %></h2>
+              <div class='barre-home'><label for="determinate">HP:&nbsp; </label><progress id="determinate"  value="<%=pokemon.hp%>" min="0" max="155"> 50% </progress></div>
+          </div>
+          <%= link_to pokemon_path(pokemon) do %>
+              <div class="more_info">More info</div>
+          <% end%>
+          <div class="pokemon-stats-wrapper">
+              <div class="pokemon-stats pokemon-stats--types">
+                <p><%= pokemon.types %></p>
+                <p class="font-weight-bold">Type</p>
+              </div>
+              <span class="wrapper-vertical"></span>
+              <div class="pokemon-stats pokemon-stats--attack">
+                <p><%= pokemon.attack %></p>
+                <p class="font-weight-bold">Attack</p>
+              </div>
+              <span class="wrapper-vertical"></span>
+              <div class="pokemon-stats pokemon-stats--def">
+                <p><%= pokemon.defense %></p>
+                <p class="font-weight-bold">Def</p>
+              </div>
+              <span class="wrapper-vertical"></span>
+              <div class="pokemon-stats pokemon-stats--speed">
+                <p><%= pokemon.speed %></p>
+                <p class="font-weight-bold">Speed</p>
+              </div>
+          </div>
+          <div class="wrapper-horizontal"></div>
+          <div class="pokemon-stats pokemon-stats--abilities">
+                <p class="font-weight-bold">Abilities</p>
+                <p><%= pokemon.abilities %></p>
+              </div>
+              <div class="footer">
+                <p> <%= pokemon.price %>€ </p>
+              </div>
+        </div>
+        <% end %>
+          </div>
 
 
-  <h3>Les plus demandés</h3>
-<div class="cards-home">
-  <% pokemon_asked = @pokemons.order(id: :desc).limit(5) %>
-  <% pokemon_asked.each do |pokemon| %>
-    <%= link_to pokemon_path(pokemon) do %>
-      <div class='pokemon-card'>
-      <%=image_tag pokemon.image_url, alt: pokemon.name if pokemon.image_url != nil%>
-      <div class='pokemon-infos'></div>
-        <%= pokemon.name %>
-        attack: <%= pokemon.attack %>
-        defense: <%= pokemon.defense %>
-        hp: <%= pokemon.hp %>
-      </div>
-    <% end%>
-  <% end %>
-</div>
-
-<h3>les plus puissants</h3>
-<div class='cards-home'>
-  <%pokemon_powerful = @pokemons.order(attack: :desc).limit(5)%>
-  <% pokemon_powerful.each do |pokemon| %>
-    <%= link_to pokemon_path(pokemon) do %>
-      <div class='pokemon-card'>
-      <%=image_tag pokemon.image_url, alt: pokemon.name if pokemon.image_url != nil%>
-      <div class='pokemon-infos'></div>
-        <%= pokemon.name %>
-        attack: <%= pokemon.attack %>
-        defense: <%= pokemon.defense %>
-        hp: <%= pokemon.hp %>
-      </div>
-    <% end%>
-  <% end %>
-</div>
-<h3>les moins chers</h3>
-<div class="cards-home">
-<%pokemon_cheaper = @pokemons.order(:price).limit(5)%>
-<% pokemon_cheaper.each do |pokemon| %>
-    <%= link_to pokemon_path(pokemon) do %>
-      <div class='pokemon-card'>
-      <%=image_tag pokemon.image_url, alt: pokemon.name if pokemon.image_url != nil%>
-      <div class='pokemon-infos'></div>
-        <%= pokemon.name %>
-        attack: <%= pokemon.attack %>
-        defense: <%= pokemon.defense %>
-        hp: <%= pokemon.hp %>
-      </div>
-    <% end%>
-<% end %>
+          <h3>les plus puissants</h3>
+          <div class='cards-home'>
+        <%pokemon_powerful = @pokemons.order(attack: :desc).limit(5)%>
+        <% pokemon_powerful.each do |pokemon| %>
+          <%= link_to pokemon_path(pokemon) do %>
+            <div class='pokemon-card'>
+            <%=image_tag pokemon.image_url, alt: pokemon.name if pokemon.image_url != nil%>
+            <div class='pokemon-infos'></div>
+              <%= pokemon.name %>
+              attack: <%= pokemon.attack %>
+              defense: <%= pokemon.defense %>
+              hp: <%= pokemon.hp %>
+            </div>
+          <% end%>
+        <% end %>
+          </div>
+          <h3>les moins chers</h3>
+          <div class="cards-home">
+          <%pokemon_cheaper = @pokemons.order(:price).limit(5)%>
+          <% pokemon_cheaper.each do |pokemon| %>
+          <%= link_to pokemon_path(pokemon) do %>
+            <div class='pokemon-card'>
+            <%=image_tag pokemon.image_url, alt: pokemon.name if pokemon.image_url != nil%>
+            <div class='pokemon-infos'></div>
+              <%= pokemon.name %>
+              attack: <%= pokemon.attack %>
+              defense: <%= pokemon.defense %>
+              hp: <%= pokemon.hp %>
+            </div>
+          <% end%>
+          <% end %>
+          </div>
+  </main>
 </div>
