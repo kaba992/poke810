@@ -2,12 +2,196 @@ a {
   text-decoration: none;
 }
 
-.cards-home{
+
+
+.lg-preloader {
   display: flex;
-  justify-content: space-around;
   align-items: center;
-  img {
-    width: 10rem;
-    height: auto;
+  background: #000000;
+  justify-content: center;
+  opacity: 1;
+  transition: opacity 0.3s linear;
+
+  .lg-lottie {
+    display: block;
+    position: relative;
+    width: 400px;
+
+    z-index: 2;
   }
+
+  &.is-hidden {
+    opacity: 0;
+  }
+}
+
+#loader {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ffffff;
+  height: 100vh;
+  width: 100%;
+  z-index: 999;
+}
+
+.container-fluid {
+  height: 100%;
+}
+
+/* CURSEUR */
+
+
+.lg-cursor .lg-cursor-pointer:nth-child(1):before {
+  margin: -15px 0 0 -15px;
+  width: 30px;
+  height: 30px;
+  background: rgba(0, 255, 255, 0.25);
+}
+
+.lg-cursor .lg-cursor-pointer:nth-child(2):before {
+  background-color: white;
+}
+
+.lg-cursor .lg-cursor-trail path {
+  stroke-width: 8px;
+}
+
+.cards-home {
+
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 8rem;
+
+}
+
+.pokemon {
+  &-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 80px 12px 20px;
+    border-radius: 10px;
+    background-color: #fff;
+    width: calc(100% / 5);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+    gap: 1.5rem;
+  }
+
+  &-img {
+    position: absolute;
+    top: -100px;
+
+    img {
+      width: 10rem;
+      height: 10rem;
+    }
+  }
+
+  &-stats {
+    & {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    &-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+  }
+
+}
+
+.name {
+  font-size: 1.5rem;
+}
+
+.more_info {
+  padding: 15px 30px;
+  background: linear-gradient(to right, #9EDA93, #22CBA8);
+  border-radius: 25px;
+  border: none;
+  color: #fff;
+  min-width: 60%;
+}
+
+
+
+
+.wrapper-horizontal {
+  border: 0.5px solid rgb(220, 211, 211);
+  margin: 0.5rem;
+  width: 90%;
+
+}
+
+.font-weight-bold {
+  font-weight: bold;
+}
+.barre-home {
+  display: flex;
+  align-items: center;
+
+  // Progress bar
+progress {
+  width: 100%;
+  display: block;
+  margin: 0px auto 20px auto;
+}
+
+progress {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+progress[value] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+progress:not([value]) {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+progress::-webkit-progress-bar {
+  background: linear-gradient(#ccc 0%, #eee 50%, #eee 50%, #ccc 100%);
+  border-radius: 8px;
+  width: 200px;
+  margin: 0px auto;
+  max-width: 200px;
+  height: 10px;
+}
+
+progress::-webkit-progress-value {
+  background: linear-gradient(to right, #9EDA93, #22CBA8);
+    border-radius: 8px;
+}
+
+
+progress {
+  background: linear-gradient(#ccc 0%, #eee 50%, #eee 50%, #ccc 100%);
+  border-radius: 8px;
+  width: 200px;
+  margin: 0px auto;
+  max-width: 200px;
+  height: 10px;
+}
+
+progress::-moz-progress-value {
+  background: linear-gradient(#b98cf5 0%, #f0e6ff 50%, #f0e6ff 50%, #b98cf5 100%);
+    border-radius: 8px;
+}
+
 }

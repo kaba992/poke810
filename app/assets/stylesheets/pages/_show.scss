@@ -1,0 +1,117 @@
+.pokemon-show {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 4rem;
+  height: 100%;
+  width: 100%;
+
+  &-img {
+    img {
+      z-index: 100 !important;
+      width: 30rem;
+      height: 30rem;
+      padding-top: 10px;
+    }
+  }
+
+  &-stats {
+    .stats {
+
+      tr {
+        margin: 1rem;
+      }
+    }
+
+    &-wrapper {
+      perspective: 400px;
+      margin: auto 0;
+      width: 20em;
+
+      .table {
+        transition: .3s;
+        transform: rotateY(25deg);
+
+        &:hover {
+          transform: rotateY(0deg);
+        }
+      }
+    }
+  }
+
+}
+
+.table-show {
+  width: 100%;
+
+}
+
+
+.barre-show {
+  display: flex;
+  align-items: center;
+
+  // Progress bar
+  progress {
+    width: 100%;
+    display: block;
+    margin: 0px auto 20px auto;
+  }
+
+  progress {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+
+  progress[value] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+
+  progress:not([value]) {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+
+  progress::-webkit-progress-bar {
+    background: linear-gradient(#ccc 0%, #eee 50%, #eee 50%, #ccc 100%);
+    border-radius: 8px;
+    width: 300px;
+    margin: 0px auto;
+    max-width: 300px;
+    height: 20px;
+  }
+
+  progress::-webkit-progress-value {
+    background: linear-gradient(to right, #9EDA93, #22CBA8);
+    border-radius: 8px;
+  }
+
+
+  progress {
+    background: linear-gradient(#ccc 0%, #eee 50%, #eee 50%, #ccc 100%);
+    border-radius: 8px;
+    width: 300px;
+    margin: 0px auto;
+    max-width: 300px;
+    height: 20px;
+  }
+
+  progress::-moz-progress-value {
+    background-image: linear-gradient(45deg, hsla(0, 0%, 100%, .15) 25%, transparent 0, transparent 50%, hsla(0, 0%, 100%, .15) 0, hsla(0, 0%, 100%, .15) 75%, transparent 0, transparent);
+    // background-size: 1rem 1rem;
+    border-radius: 8px;
+  }
+
+}
+
+.description-show {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 250px;
+  width: 100%;
+}
