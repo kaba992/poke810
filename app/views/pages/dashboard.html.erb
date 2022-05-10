@@ -6,13 +6,13 @@
       <% @bookings_booker.each do |booking| %>
         <div class='pokemon-card'>
           <div class="pokemon-img">
-            <%=image_tag booking.pokemon.image_url, alt: pokemon.name if booking.pokemon.image_url != nil%>
+            <%=image_tag booking.pokemon.image_url, alt: booking.pokemon.name %>
           </div>
           <div class='pokemon-infos'>
             <h2 class='text-center font-weight-bold name'><%= booking.pokemon.name %></h2>
             <div class='barre-home'><label for="determinate">HP:&nbsp; </label><progress id="determinate"  value="<%=booking.pokemon.hp%>" min="0" max="155"> 50% </progress></div>
           </div>
-          <%= link_to pokemon_path(pokemon) do %>
+          <%= link_to pokemon_path(booking.pokemon) do %>
             <div class="more_info">More info</div>
           <% end%>
           <div class="pokemon-stats-wrapper">
@@ -60,13 +60,13 @@
       <% @bookings_owner.each do |booking| %>
         <div class='pokemon-card'>
           <div class="pokemon-img">
-            <%=image_tag booking.pokemon.image_url, alt: pokemon.name if booking.pokemon.image_url != nil%>
+            <%=image_tag booking.pokemon.image_url, alt: booking.pokemon.name if booking.pokemon.image_url != nil%>
           </div>
           <div class='pokemon-infos'>
             <h2 class='text-center font-weight-bold name'><%= booking.pokemon.name %></h2>
             <div class='barre-home'><label for="determinate">HP:&nbsp; </label><progress id="determinate"  value="<%=booking.pokemon.hp%>" min="0" max="155"> 50% </progress></div>
           </div>
-          <%= link_to pokemon_path(pokemon) do %>
+          <%= link_to pokemon_path(booking.pokemon) do %>
             <div class="more_info">More info</div>
           <% end%>
           <div class="pokemon-stats-wrapper">
