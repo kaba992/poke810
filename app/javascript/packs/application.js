@@ -25,7 +25,6 @@ document.addEventListener("turbolinks:load", () => {
   $('.js-example-basic-single').select2();
   // window.addEventListener('load', () => {
   //   const loader = document.getElementById('loader');
-
   //   const loading = bodymovin.loadAnimation({
   //     container: loader, // the dom element that will contain the animation
   //     renderer: 'svg',
@@ -50,13 +49,10 @@ document.addEventListener("turbolinks:load", () => {
   //     path: 'https://assets9.lottiefiles.com/private_files/lf30_rBOODA.json' // the path to the animation json
   //   });
   //   setTimeout(() => {
-
   //     loader.style.display = 'none';
   //   }, 2000);
   // })
-
   // barba.init({
-
   //   sync: true,
 
   // function delay(n) {
@@ -66,7 +62,6 @@ document.addEventListener("turbolinks:load", () => {
   //     }, n)
   //   })
   // }
-
   //         const done = this.async();
 
   // barba.init({
@@ -80,7 +75,6 @@ document.addEventListener("turbolinks:load", () => {
   //         const done = this.async();
 
   //         console.log('leave');
-
   //         console.log('enter');
 
   //         await delay(1);
@@ -89,9 +83,7 @@ document.addEventListener("turbolinks:load", () => {
   //       },
   //       enter() {
 
-
   //         console.log('enter');
-
 
   //       }
   //     }
