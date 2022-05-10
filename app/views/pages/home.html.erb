@@ -1,7 +1,8 @@
-
 <div class="container-fluid">
   <main data-barba="container" data-barba-namespace="home" class="container-fluid">
+
     <%# <h1>Pages#home</h1> %>
+        <h2>Louer vos pokemons préférés pour une semaine, un week-end ...</h2>
     <%# <p>Find me in app/views/pages/home.html.erb</p> %>
     <h1 class = 'text-center'>Louez vos pokemons préférés pour une semaine, un week-end ...</h1>
     <br>
@@ -58,12 +59,12 @@
         <% end %>
     </div>
     <br>
+    </div>
 
     <h3>les plus puissants</h3>
     <div class='cards-home'>
       <%pokemon_powerful = @pokemons.order(attack: :desc).limit(5)%>
       <% pokemon_powerful.each do |pokemon| %>
-
       <div class='pokemon-card'>
         <div class="pokemon-img">
           <%=image_tag pokemon.image_url, alt: pokemon.name if pokemon.image_url != nil%>
