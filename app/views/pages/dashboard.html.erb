@@ -6,23 +6,23 @@
       <% @bookings_booker.each do |booking| %>
         <div class='pokemon-card'>
           <div class="pokemon-img">
-            <%=image_tag booking.pokemon.image_url, alt: pokemon.name if booking.pokemon.image_url != nil%>
+            <%=image_tag booking.pokemon.image_url, alt: booking.pokemon.name if booking.pokemon.image_url != nil%>
           </div>
           <div class='pokemon-infos'>
             <h2 class='text-center font-weight-bold name'><%= booking.pokemon.name %></h2>
             <div class='barre-home'><label for="determinate">HP:&nbsp; </label><progress id="determinate"  value="<%=booking.pokemon.hp%>" min="0" max="155"> 50% </progress></div>
           </div>
-          <%= link_to pokemon_path(pokemon) do %>
+          <%= link_to pokemon_path(booking.pokemon) do %>
             <div class="more_info">More info</div>
           <% end%>
           <div class="pokemon-stats-wrapper">
-            <div class="pokemon-stats pokemon-stats--types">
-              <p><%= booking.pokemon.types %></p>
-              <p class="font-weight-bold">Type</p>
-            </div>
-            <div> <%= booking.start_date %> | <%= booking.end_date %> | <%= booking.status %> </div>
-            <div class="footer">
+            <div class="footer-dashboard">
+              <div>
+                <p><%= booking.start_date.strftime("Du %m/%d/%Y") %> </p>
+                <p><%= booking.end_date.strftime("Au %m/%d/%Y") %> </p>
+              </div>
               <p> <%= booking.pokemon.price %>€ </p>
+              <p><%= booking.status %> </p>
             </div>
           </div>
         </div>
@@ -60,13 +60,13 @@
       <% @bookings_owner.each do |booking| %>
         <div class='pokemon-card'>
           <div class="pokemon-img">
-            <%=image_tag booking.pokemon.image_url, alt: pokemon.name if booking.pokemon.image_url != nil%>
+            <%=image_tag booking.pokemon.image_url, alt: booking.pokemon.name if booking.pokemon.image_url != nil%>
           </div>
           <div class='pokemon-infos'>
             <h2 class='text-center font-weight-bold name'><%= booking.pokemon.name %></h2>
             <div class='barre-home'><label for="determinate">HP:&nbsp; </label><progress id="determinate"  value="<%=booking.pokemon.hp%>" min="0" max="155"> 50% </progress></div>
           </div>
-          <%= link_to pokemon_path(pokemon) do %>
+          <%= link_to pokemon_path(booking.pokemon) do %>
             <div class="more_info">More info</div>
           <% end%>
           <div class="pokemon-stats-wrapper">
@@ -86,7 +86,7 @@
               <%= f.submit %>
             <% end %>
           <% else %>
-            <%= booking.status %>
+            <p><%= booking.status %></p>
           <% end %>
         </div>
       <% end %>
