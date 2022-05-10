@@ -6,7 +6,9 @@
       <% @bookings_booker.each do |booking| %>
         <div class='pokemon-card'>
           <div class="pokemon-img">
+
             <%=image_tag booking.pokemon.image_url, alt: booking.pokemon.name if booking.pokemon.image_url != nil%>
+
           </div>
           <div class='pokemon-infos'>
             <h2 class='text-center font-weight-bold name'><%= booking.pokemon.name %></h2>
