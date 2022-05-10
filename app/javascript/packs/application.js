@@ -19,63 +19,59 @@ import "bootstrap"
 
 document.addEventListener("turbolinks:load", () => {
   $('.js-example-basic-single').select2();
+  // window.addEventListener('load', () => {
+  //   const loader = document.getElementById('loader');
+
+  //   const loading = bodymovin.loadAnimation({
+  //     container: loader, // the dom element that will contain the animation
+  //     renderer: 'svg',
+  //     loop: true,
+  //     autoplay: true,
+  //     path: 'https://assets9.lottiefiles.com/private_files/lf30_rBOODA.json' // the path to the animation json
+  //   });
+  //   setTimeout(() => {
+
+  //     loader.style.display = 'none';
+  //   }, 2000);
+  // })
 
 
 
-  window.addEventListener('load', () => {
-    const loader = document.getElementById('loader');
+  // function delay(n) {
+  //   return new Promise((done) => {
+  //     setTimeout(() => {
+  //       done();
+  //     }, n)
+  //   })
+  // }
 
-    const loading = bodymovin.loadAnimation({
-      container: loader, // the dom element that will contain the animation
-      renderer: 'svg',
-      loop: true,
-      autoplay: true,
-      path: 'https://assets9.lottiefiles.com/private_files/lf30_rBOODA.json' // the path to the animation json
-    });
-    setTimeout(() => {
+  // barba.init({
 
-      loader.style.display = 'none';
-    }, 2000);
-  })
+  //   sync: true,
 
+  //   transitions: [
+  //     {
+  //       async leave() {
 
+  //         const done = this.async();
 
-  function delay(n) {
-    return new Promise((done) => {
-      setTimeout(() => {
-        done();
-      }, n)
-    })
-  }
+  //         console.log('leave');
 
 
-  barba.init({
+  //         await delay(1);
+  //         done();
 
-    sync: true,
-
-    transitions: [
-      {
-        async leave() {
-
-          const done = this.async();
-
-          console.log('leave');
+  //       },
+  //       enter() {
 
 
-          await delay(1);
-          done();
-
-        },
-        enter() {
+  //         console.log('enter');
 
 
-          console.log('enter');
+  //       }
+  //     }
+  //   ]
 
-
-        }
-      }
-    ]
-
-  })
+  // })
 
 });
