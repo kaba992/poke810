@@ -8,7 +8,7 @@
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-
+    <%= stylesheet_pack_tag 'application' %>
 <script defer src="https://unpkg.com/@barba/core"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/@barba/core"></script>
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
@@ -18,7 +18,7 @@
 
   <body data-barba="wrapper">
   <div id='loader'></div>
-     
+
   <%= render 'shared/navbar' %>
 <div class="barba-container">
     <%= yield %>

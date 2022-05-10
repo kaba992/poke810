@@ -38,9 +38,9 @@
     <div class="pokemon-show-booking">
       <%if current_user.id != @pokemon.user_id%>
       <%= simple_form_for [ @pokemon, @booking ] do |f| %>
-        <%= f.input :start_date %>
-        <%= f.input :end_date %>
-        <%= f.submit "Réserver", class: "btn btn-primary" %>
+        <%= f.input :start_date, as: :string, input_html: { id: 'start_date' } %>
+        <%= f.input :end_date, as: :string, input_html: { id: 'end_date' }%>
+        <%= f.submit "Confirmer", class: "btn btn-primary" %>
       <% end %>
       <%end%>
     </div>

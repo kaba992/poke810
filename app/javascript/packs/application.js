@@ -7,6 +7,8 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
+import '../plugins/flatpickr'
+
 
 Rails.start()
 Turbolinks.start()
@@ -17,65 +19,67 @@ import luge from '@waaark/luge'
 import "controllers"
 import "bootstrap"
 
+
+
 document.addEventListener("turbolinks:load", () => {
   $('.js-example-basic-single').select2();
 
 
 
-  window.addEventListener('load', () => {
-    const loader = document.getElementById('loader');
+  // window.addEventListener('load', () => {
+  //   const loader = document.getElementById('loader');
 
-    const loading = bodymovin.loadAnimation({
-      container: loader, // the dom element that will contain the animation
-      renderer: 'svg',
-      loop: true,
-      autoplay: true,
-      path: 'https://assets9.lottiefiles.com/private_files/lf30_rBOODA.json' // the path to the animation json
-    });
-    setTimeout(() => {
+  //   const loading = bodymovin.loadAnimation({
+  //     container: loader, // the dom element that will contain the animation
+  //     renderer: 'svg',
+  //     loop: true,
+  //     autoplay: true,
+  //     path: 'https://assets9.lottiefiles.com/private_files/lf30_rBOODA.json' // the path to the animation json
+  //   });
+  //   setTimeout(() => {
 
-      loader.style.display = 'none';
-    }, 2000);
-  })
-
-
-
-  function delay(n) {
-    return new Promise((done) => {
-      setTimeout(() => {
-        done();
-      }, n)
-    })
-  }
+  //     loader.style.display = 'none';
+  //   }, 2000);
+  // })
 
 
-  barba.init({
 
-    sync: true,
-
-    transitions: [
-      {
-        async leave() {
-
-          const done = this.async();
-
-          console.log('leave');
+  // function delay(n) {
+  //   return new Promise((done) => {
+  //     setTimeout(() => {
+  //       done();
+  //     }, n)
+  //   })
+  // }
 
 
-          await delay(1);
-          done();
+  // barba.init({
 
-        },
-        enter() {
+  //   sync: true,
+
+  //   transitions: [
+  //     {
+  //       async leave() {
+
+  //         const done = this.async();
+
+  //         console.log('leave');
 
 
-          console.log('enter');
+  //         await delay(1);
+  //         done();
+
+  //       },
+  //       enter() {
 
 
-        }
-      }
-    ]
+  //         console.log('enter');
 
-  })
+
+  //       }
+  //     }
+  //   ]
+
+  // })
 
 });
