@@ -6,9 +6,7 @@
       <% @bookings_booker.each do |booking| %>
         <div class='pokemon-card'>
           <div class="pokemon-img">
-
             <%=image_tag booking.pokemon.image_url, alt: booking.pokemon.name if booking.pokemon.image_url != nil%>
-
           </div>
           <div class='pokemon-infos'>
             <h2 class='text-center font-weight-bold name'><%= booking.pokemon.name %></h2>
@@ -20,8 +18,8 @@
           <div class="pokemon-stats-wrapper">
             <div class="footer-dashboard">
               <div>
-                <p><%= booking.start_date.strftime("Du %m/%d/%Y") %> </p>
-                <p><%= booking.end_date.strftime("Au %m/%d/%Y") %> </p>
+                <p><%= booking.start_date.strftime("Du %d/%m/%Y") %> </p>
+                <p><%= booking.end_date.strftime("Au %d/%m/%Y") %> </p>
               </div>
               <p> <%= booking.pokemon.price %>€ </p>
               <p><%= booking.status %> </p>

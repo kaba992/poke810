@@ -1,8 +1,7 @@
 <main data-barba="container" data-barba-namespace="index">
   <h1>Pokemons#index</h1>
   <p>Find me in app/views/pokemons/index.html.erb</p>
-
   <% @pokemons.each do |pokemon| %>
-   <div> <%= link_to pokemon.name, pokemon_path(pokemon) %> </div>
+    <div> <%= link_to pokemon.name, pokemon_path(pokemon) %> </div>
   <% end %>
 </main>

@@ -73,10 +73,13 @@ a {
     align-items: center;
     padding: 80px 12px 20px;
     border-radius: 10px;
-    background-color: #fff;
     width: calc(100% / 5);
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
     gap: 1.5rem;
+
+    &-wrapper {
+      transform: perspective(400px) rotateX(0deg) rotateY(0deg);
+    }
   }
 
   &-img {
@@ -134,62 +137,63 @@ a {
 .font-weight-bold {
   font-weight: bold;
 }
+
 .barre-home {
   display: flex;
   align-items: center;
 
   // Progress bar
-progress {
-  width: 100%;
-  display: block;
-  margin: 0px auto 20px auto;
-}
+  progress {
+    width: 100%;
+    display: block;
+    margin: 0px auto 20px auto;
+  }
 
-progress {
+  progress {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-}
+  }
 
-progress[value] {
+  progress[value] {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-}
+  }
 
-progress:not([value]) {
+  progress:not([value]) {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-}
+  }
 
-progress::-webkit-progress-bar {
-  background: linear-gradient(#ccc 0%, #eee 50%, #eee 50%, #ccc 100%);
-  border-radius: 8px;
-  width: 200px;
-  margin: 0px auto;
-  max-width: 200px;
-  height: 10px;
-}
-
-progress::-webkit-progress-value {
-  background: linear-gradient(to right, #9EDA93, #22CBA8);
+  progress::-webkit-progress-bar {
+    background: linear-gradient(#ccc 0%, #eee 50%, #eee 50%, #ccc 100%);
     border-radius: 8px;
-}
+    width: 200px;
+    margin: 0px auto;
+    max-width: 200px;
+    height: 10px;
+  }
 
-
-progress {
-  background: linear-gradient(#ccc 0%, #eee 50%, #eee 50%, #ccc 100%);
-  border-radius: 8px;
-  width: 200px;
-  margin: 0px auto;
-  max-width: 200px;
-  height: 10px;
-}
-
-progress::-moz-progress-value {
-  background: linear-gradient(#b98cf5 0%, #f0e6ff 50%, #f0e6ff 50%, #b98cf5 100%);
+  progress::-webkit-progress-value {
+    background: linear-gradient(to right, #9EDA93, #22CBA8);
     border-radius: 8px;
-}
+  }
+
+
+  progress {
+    background: linear-gradient(#ccc 0%, #eee 50%, #eee 50%, #ccc 100%);
+    border-radius: 8px;
+    width: 200px;
+    margin: 0px auto;
+    max-width: 200px;
+    height: 10px;
+  }
+
+  progress::-moz-progress-value {
+    background: linear-gradient(#b98cf5 0%, #f0e6ff 50%, #f0e6ff 50%, #b98cf5 100%);
+    border-radius: 8px;
+  }
 
 }

@@ -7,8 +7,6 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
-import '../plugins/flatpickr'
-
 
 Rails.start()
 Turbolinks.start()
@@ -19,12 +17,11 @@ import luge from '@waaark/luge'
 import "controllers"
 import "bootstrap"
 
-
-
 document.addEventListener("turbolinks:load", () => {
   $('.js-example-basic-single').select2();
   // window.addEventListener('load', () => {
   //   const loader = document.getElementById('loader');
+
   //   const loading = bodymovin.loadAnimation({
   //     container: loader, // the dom element that will contain the animation
   //     renderer: 'svg',
@@ -37,23 +34,8 @@ document.addEventListener("turbolinks:load", () => {
   //     loader.style.display = 'none';
   //   }, 2000);
   // })
-  
-  // window.addEventListener('load', () => {
-  //   const loader = document.getElementById('loader');
 
-  //   const loading = bodymovin.loadAnimation({
-  //     container: loader, // the dom element that will contain the animation
-  //     renderer: 'svg',
-  //     loop: true,
-  //     autoplay: true,
-  //     path: 'https://assets9.lottiefiles.com/private_files/lf30_rBOODA.json' // the path to the animation json
-  //   });
-  //   setTimeout(() => {
-  //     loader.style.display = 'none';
-  //   }, 2000);
-  // })
-  // barba.init({
-  //   sync: true,
+
 
   // function delay(n) {
   //   return new Promise((done) => {
@@ -62,7 +44,7 @@ document.addEventListener("turbolinks:load", () => {
   //     }, n)
   //   })
   // }
-  //         const done = this.async();
+
 
   // barba.init({
 
@@ -75,7 +57,7 @@ document.addEventListener("turbolinks:load", () => {
   //         const done = this.async();
 
   //         console.log('leave');
-  //         console.log('enter');
+
 
   //         await delay(1);
   //         done();
@@ -83,11 +65,14 @@ document.addEventListener("turbolinks:load", () => {
   //       },
   //       enter() {
 
+
   //         console.log('enter');
+
 
   //       }
   //     }
   //   ]
+
   // })
 
 });
