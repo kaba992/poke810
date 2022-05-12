@@ -1,96 +1,96 @@
 <main data-barba="container" data-barba-namespace="dashboard">
   <div class="container-fluid">
-    <h1> Mes locations (booker)</h1>
-    <h2>Mes pokemons - booker</h2>
-    <div class="pokemons-dashboard">
-      <% @bookings_booker.each do |booking| %>
-        <div class='pokemon-card'>
-          <div class="pokemon-img">
-
-            <%=image_tag booking.pokemon.image_url, alt: booking.pokemon.name if booking.pokemon.image_url != nil%>
-
-          </div>
-          <div class='pokemon-infos'>
-            <h2 class='text-center font-weight-bold name'><%= booking.pokemon.name %></h2>
-            <div class='barre-home'><label for="determinate">HP:&nbsp; </label><progress id="determinate"  value="<%=booking.pokemon.hp%>" min="0" max="155"> 50% </progress></div>
-          </div>
-          <%= link_to pokemon_path(booking.pokemon) do %>
-            <div class="more_info">More info</div>
-          <% end%>
-          <div class="pokemon-stats-wrapper">
-            <div class="footer-dashboard">
-              <div>
-                <p><%= booking.start_date.strftime("Du %m/%d/%Y") %> </p>
-                <p><%= booking.end_date.strftime("Au %m/%d/%Y") %> </p>
+    <div class="dashboard">
+      <h1> Mes locations (booker)</h1>
+      <h2>Mes pokemons - booker</h2>
+      <div class="pokemons-dashboard">
+        <% @bookings_booker.each do |booking| %>
+          <div class='pokemon-card'>
+            <div class="pokemon-img">
+              <%=image_tag booking.pokemon.image_url, alt: booking.pokemon.name if booking.pokemon.image_url != nil%>
+            </div>
+            <div class='pokemon-infos'>
+              <h2 class='text-center font-weight-bold name'><%= booking.pokemon.name %></h2>
+              <div class='barre-home'><label for="determinate">HP:&nbsp; </label><progress id="determinate"  value="<%=booking.pokemon.hp%>" min="0" max="155"> 50% </progress></div>
+            </div>
+            <%= link_to pokemon_path(booking.pokemon) do %>
+              <div class="more_info">More info</div>
+            <% end%>
+            <div class="pokemon-stats-wrapper">
+              <div class="footer-dashboard">
+                <div>
+                  <p><%= booking.start_date.strftime("Du %m/%d/%Y") %> </p>
+                  <p><%= booking.end_date.strftime("Au %m/%d/%Y") %> </p>
+                </div>
+                <p> <%= booking.pokemon.price %>€ </p>
+                <p><%= booking.status %> </p>
               </div>
-              <p> <%= booking.pokemon.price %>€ </p>
-              <p><%= booking.status %> </p>
             </div>
           </div>
-        </div>
-      <% end %>
-    </div>
-    <h2>Mes pokemons - owner</h2>
-    <%= link_to 'add a pokemon', new_pokemon_path %>
-    <div class="pokemons-dashboard">
-      <% @pokemons_owner.each do |pokemon| %>
-        <div class='pokemon-card'>
-          <div class="pokemon-img">
-            <%=image_tag pokemon.image_url, alt: pokemon.name if pokemon.image_url != nil%>
-          </div>
-          <div class='pokemon-infos'>
-            <h2 class='text-center font-weight-bold name'><%= pokemon.name %></h2>
-            <div class='barre-home'><label for="determinate">HP:&nbsp; </label><progress id="determinate"  value="<%=pokemon.hp%>" min="0" max="155"> 50% </progress></div>
-          </div>
-          <%= link_to pokemon_path(pokemon) do %>
-            <div class="more_info">More info</div>
-          <% end%>
-          <div class="pokemon-stats-wrapper">
-            <div class="pokemon-stats pokemon-stats--types">
-              <p><%= pokemon.types %></p>
-              <p class="font-weight-bold">Type</p>
+        <% end %>
+      </div>
+      <h2>Mes pokemons - owner</h2>
+      <%= link_to 'add a pokemon', new_pokemon_path %>
+      <div class="pokemons-dashboard">
+        <% @pokemons_owner.each do |pokemon| %>
+          <div class='pokemon-card'>
+            <div class="pokemon-img">
+              <%=image_tag pokemon.image_url, alt: pokemon.name if pokemon.image_url != nil%>
             </div>
-            <div class="footer">
-              <p> <%= pokemon.price %>€ </p>
+            <div class='pokemon-infos'>
+              <h2 class='text-center font-weight-bold name'><%= pokemon.name %></h2>
+              <div class='barre-home'><label for="determinate">HP:&nbsp; </label><progress id="determinate"  value="<%=pokemon.hp%>" min="0" max="155"> 50% </progress></div>
+            </div>
+            <%= link_to pokemon_path(pokemon) do %>
+              <div class="more_info">More info</div>
+            <% end%>
+            <div class="pokemon-stats-wrapper">
+              <div class="pokemon-stats pokemon-stats--types">
+                <p><%= pokemon.types %></p>
+                <p class="font-weight-bold">Type</p>
+              </div>
+              <div class="footer">
+                <p> <%= pokemon.price %>€ </p>
+              </div>
+            </div>
+          </div >
+        <% end %>
+      </div>
+      <h2>Mes réservations - owner</h2>
+      <div class="pokemons-dashboard">
+        <% @bookings_owner.each do |booking| %>
+          <div class='pokemon-card'>
+            <div class="pokemon-img">
+              <%=image_tag booking.pokemon.image_url, alt: booking.pokemon.name if booking.pokemon.image_url != nil%>
+            </div>
+            <div class='pokemon-infos'>
+              <h2 class='text-center font-weight-bold name'><%= booking.pokemon.name %></h2>
+              <div class='barre-home'><label for="determinate">HP:&nbsp; </label><progress id="determinate"  value="<%=booking.pokemon.hp%>" min="0" max="155"> 50% </progress></div>
+            </div>
+            <%= link_to pokemon_path(booking.pokemon) do %>
+              <div class="more_info">More info</div>
+            <% end%>
+            <div class="pokemon-stats-wrapper">
+              <div class="footer-dashboard">
+                <div>
+                  <p><%= booking.start_date.strftime("Du %m/%d/%Y") %> </p>
+                  <p><%= booking.end_date.strftime("Au %m/%d/%Y") %> </p>
+                </div>
+                <p> <%= booking.pokemon.price %>€ </p>
+              </div>
+            </div>
+            <div class="dashboard-status">
+              <% if booking.status == 'pending' %>
+                <%= simple_form_for(booking) do |f| %>
+                  <%= f.input :status, collection: Booking::STATUS, label:false %>
+                  <%= f.submit "Update", :class => "more_info-res"%>
+                <% end %>
+              <% else %>
+                <p><%= booking.status %></p>
+              <% end %>
             </div>
           </div>
-        </div >
-      <% end %>
-    </div>
-    <h2>Mes réservations - owner</h2>
-    <div class="pokemons-dashboard">
-      <% @bookings_owner.each do |booking| %>
-        <div class='pokemon-card'>
-          <div class="pokemon-img">
-            <%=image_tag booking.pokemon.image_url, alt: booking.pokemon.name if booking.pokemon.image_url != nil%>
-          </div>
-          <div class='pokemon-infos'>
-            <h2 class='text-center font-weight-bold name'><%= booking.pokemon.name %></h2>
-            <div class='barre-home'><label for="determinate">HP:&nbsp; </label><progress id="determinate"  value="<%=booking.pokemon.hp%>" min="0" max="155"> 50% </progress></div>
-          </div>
-          <%= link_to pokemon_path(booking.pokemon) do %>
-            <div class="more_info">More info</div>
-          <% end%>
-          <div class="pokemon-stats-wrapper">
-            <div class="pokemon-stats pokemon-stats--types">
-              <p><%= booking.pokemon.types %></p>
-              <p class="font-weight-bold">Type</p>
-            </div>
-            <div> <%= booking.start_date %> | <%= booking.end_date %> | <%= booking.status %> </div>
-            <div class="footer">
-              <p> <%= booking.pokemon.price %>€ </p>
-            </div>
-          </div>
-          |
-          <% if booking.status == 'pending' %>
-            <%= simple_form_for(booking) do |f| %>
-              <%= f.input :status, collection: Booking::STATUS %>
-              <%= f.submit %>
-            <% end %>
-          <% else %>
-            <p><%= booking.status %></p>
-          <% end %>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
   </main>

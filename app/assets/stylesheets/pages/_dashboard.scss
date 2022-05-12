@@ -1,3 +1,8 @@
+.dashboard {
+  margin-top: 70px;
+}
+
+
 .pokemons-dashboard {
   display: flex;
   align-items: center;
@@ -10,4 +15,25 @@
   align-items: center;
   justify-content: space-around;
   width: 100%;
+}
+
+.more_info-res {
+  padding: 7px 15px;
+  background: linear-gradient(to right, #9EDA93, #22CBA8);
+  border-radius: 25px;
+  border: none;
+  color: #fff;
+  min-width: 30%;
+}
+
+.dashboard-status {
+  width: 100%;
+
+  form {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+
+  }
 }

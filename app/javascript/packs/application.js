@@ -7,8 +7,6 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
-import '../plugins/flatpickr'
-
 
 Rails.start()
 Turbolinks.start()
@@ -19,75 +17,36 @@ import luge from '@waaark/luge'
 import "controllers"
 import "bootstrap"
 
-
-
 document.addEventListener("turbolinks:load", () => {
+
   $('.js-example-basic-single').select2();
-  // window.addEventListener('load', () => {
-  //   const loader = document.getElementById('loader');
-  //   const loading = bodymovin.loadAnimation({
-  //     container: loader, // the dom element that will contain the animation
-  //     renderer: 'svg',
-  //     loop: true,
-  //     autoplay: true,
-  //     path: 'https://assets9.lottiefiles.com/private_files/lf30_rBOODA.json' // the path to the animation json
-  //   });
-  //   setTimeout(() => {
 
-  //     loader.style.display = 'none';
-  //   }, 2000);
-  // })
+  const pokemon = document.querySelector(".pokemon-show-img");
+  const pokeball = document.querySelector(".pokeball");
+  const TLshow = gsap.timeline()
+  const TLhome = gsap.timeline()
+  gsap.set(pokemon, { scale: 0, transformOrigin: "center" })
 
-  // window.addEventListener('load', () => {
-  //   const loader = document.getElementById('loader');
+  TLshow.to(pokeball, 1, { y: 500, ease: "bounce" })
+    .to(pokeball, { rotate: 50, rotate: -50, repeat: 2 })
+    .to(pokeball, { opacity: 0, delay: 0.5 })
+    .to(pokemon, { scale: 1, transformOrigin: "center", ease: "elastic.out(2, 0.8)" })
+  TLhome.from(".banner-title", 1, { y: 50, opacity: 0, ease: "Back.easeOut" })
+    .from(".search", { x: 35, opacity: 0, ease: "Back.easeOut" })
 
-  //   const loading = bodymovin.loadAnimation({
-  //     container: loader, // the dom element that will contain the animation
-  //     renderer: 'svg',
-  //     loop: true,
-  //     autoplay: true,
-  //     path: 'https://assets9.lottiefiles.com/private_files/lf30_rBOODA.json' // the path to the animation json
-  //   });
-  //   setTimeout(() => {
-  //     loader.style.display = 'none';
-  //   }, 2000);
-  // })
-  // barba.init({
-  //   sync: true,
-
-  // function delay(n) {
-  //   return new Promise((done) => {
-  //     setTimeout(() => {
-  //       done();
-  //     }, n)
-  //   })
-  // }
-  //         const done = this.async();
-
-  // barba.init({
-
-  //   sync: true,
-
-  //   transitions: [
-  //     {
-  //       async leave() {
-
-  //         const done = this.async();
-
-  //         console.log('leave');
-  //         console.log('enter');
-
-  //         await delay(1);
-  //         done();
-
-  //       },
-  //       enter() {
-
-  //         console.log('enter');
-
-  //       }
-  //     }
-  //   ]
-  // })
+  window.addEventListener('load', () => {
+    const loader = document.getElementById('loader');
+    const loading = bodymovin.loadAnimation({
+      container: loader, // the dom element that will contain the animation
+      renderer: 'svg',
+      loop: true,
+      autoplay: true,
+      path: 'https://assets9.lottiefiles.com/private_files/lf30_rBOODA.json' // the path to the animation json
+    });
+    setTimeout(() => {
+      loader.style.display = 'none';
+      console.log(loader);
+    }, 2000);
+  })
 
 });

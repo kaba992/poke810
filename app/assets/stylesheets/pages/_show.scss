@@ -1,3 +1,19 @@
+.show {
+  position: relative;
+  margin-top: 70px;
+}
+
+.pokeball {
+  img {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 8rem;
+    height: auto;
+    transform: translate(-50%, -50%);
+  }
+}
+
 .pokemon-show {
   display: flex;
   justify-content: space-around;
@@ -39,6 +55,45 @@
     }
   }
 
+  &-booking {
+    perspective: 400px;
+
+    form {
+      transition: .3s;
+      transform: rotateY(-25deg);
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+
+      &:hover {
+        transform: rotateY(0deg);
+      }
+
+      label {
+        width: 11.5rem;
+      }
+    }
+
+    .booking_start_date,
+    .booking_end_date {
+      display: flex;
+      align-items: center;
+      height: 40px;
+      width: 100%;
+      border-radius: 8px;
+
+    }
+
+    .more_info-show {
+      padding: 15px 30px;
+      background: linear-gradient(to right, #9EDA93, #22CBA8);
+      border-radius: 25px;
+      border: none;
+      color: #fff;
+      min-width: 40%;
+    }
+
+  }
 }
 
 .table-show {
