@@ -5,7 +5,7 @@ class BookingsController < ApplicationController
     @booking.user_id = current_user.id
     @booking.pokemon_id = @pokemon.id
     if @booking.save!
-      redirect_to pokemons_path
+      redirect_to dashboard_path
     else
       render
     end
