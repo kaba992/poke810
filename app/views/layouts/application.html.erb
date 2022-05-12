@@ -16,7 +16,12 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
   <body data-barba="wrapper">
+    <div id='loader'></div>
     <%= render 'shared/navbar' %>
     <%= yield %>
+    <div data-lg-cursor data-lg-cursor-hide>
+      <div data-lg-cursor-pointer></div>
+      <div data-lg-cursor-trail></div>
+    </div>
   </body>
 </html>
