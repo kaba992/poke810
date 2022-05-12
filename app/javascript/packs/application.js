@@ -16,6 +16,21 @@ import { select2 } from 'select2'
 import luge from '@waaark/luge'
 import "controllers"
 import "bootstrap"
+import "../plugins/flatpickr.js"
+
+const loader = document.getElementById('loader');
+loader.style.display = 'flex';
+const loading = bodymovin.loadAnimation({
+  container: loader, // the dom element that will contain the animation
+  renderer: 'svg',
+  loop: true,
+  autoplay: true,
+  path: 'https://assets9.lottiefiles.com/private_files/lf30_rBOODA.json' // the path to the animation json
+});
+setTimeout(() => {
+  loader.style.display = 'none';
+  console.log(loader);
+}, 2000);
 
 document.addEventListener("turbolinks:load", () => {
 
@@ -33,20 +48,4 @@ document.addEventListener("turbolinks:load", () => {
     .to(pokemon, { scale: 1, transformOrigin: "center", ease: "elastic.out(2, 0.8)" })
   TLhome.from(".banner-title", 1, { y: 50, opacity: 0, ease: "Back.easeOut" })
     .from(".search", { x: 35, opacity: 0, ease: "Back.easeOut" })
-
-  window.addEventListener('load', () => {
-    const loader = document.getElementById('loader');
-    const loading = bodymovin.loadAnimation({
-      container: loader, // the dom element that will contain the animation
-      renderer: 'svg',
-      loop: true,
-      autoplay: true,
-      path: 'https://assets9.lottiefiles.com/private_files/lf30_rBOODA.json' // the path to the animation json
-    });
-    setTimeout(() => {
-      loader.style.display = 'none';
-      console.log(loader);
-    }, 2000);
-  })
-
 });

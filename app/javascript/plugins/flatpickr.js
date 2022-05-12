@@ -50,5 +50,3 @@ function object_disable_date() {
   }
   return array
 }
-
-console.log(object_disable_date())

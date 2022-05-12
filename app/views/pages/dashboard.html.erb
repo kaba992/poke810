@@ -1,10 +1,9 @@
 <main data-barba="container" data-barba-namespace="dashboard">
   <div class="container-fluid">
     <div class="dashboard">
-      <h1> Mes locations (booker)</h1>
-      <h2>Mes pokemons - booker</h2>
+      <h2>My reservation </h2>
       <div class="pokemons-dashboard">
-        <% @bookings_booker.each do |booking| %>
+        <% @bookings_booker.reverse.each do |booking| %>
           <div class='pokemon-card'>
             <div class="pokemon-img">
               <%=image_tag booking.pokemon.image_url, alt: booking.pokemon.name if booking.pokemon.image_url != nil%>
@@ -30,9 +29,9 @@
         <% end %>
       </div>
       <h2>Mes pokemons - owner</h2>
-      <%= link_to 'add a pokemon', new_pokemon_path %>
       <div class="pokemons-dashboard">
-        <% @pokemons_owner.each do |pokemon| %>
+      <%= link_to 'add a pokemon', new_pokemon_path, class: 'pokemon-card' %>
+        <% @pokemons_owner.reverse.each do |pokemon| %>
           <div class='pokemon-card'>
             <div class="pokemon-img">
               <%=image_tag pokemon.image_url, alt: pokemon.name if pokemon.image_url != nil%>
@@ -58,7 +57,7 @@
       </div>
       <h2>Mes réservations - owner</h2>
       <div class="pokemons-dashboard">
-        <% @bookings_owner.each do |booking| %>
+        <% @bookings_owner.reverse.each do |booking| %>
           <div class='pokemon-card'>
             <div class="pokemon-img">
               <%=image_tag booking.pokemon.image_url, alt: booking.pokemon.name if booking.pokemon.image_url != nil%>
