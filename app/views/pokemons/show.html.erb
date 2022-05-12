@@ -1,52 +1,61 @@
 <main data-barba="container" data-barba-namespace="show">
- <h1 class="text-center"> <%= @pokemon.name %> </h1>
-
-  <div class="pokemon-show">
-    <div class="pokemon-show-stats">
-      <div class="col-lg-3 col-md-2  d-flex flex-wrap justify pokemon-show-stats-wrapper">
-        <table class="table table-borderless">
-          <tr>
-            <td class="text-right font-weight-bold">HP</td>
-            <td><div class='barre-show'><label for="determinate">&nbsp;</label><progress id="determinate"  value="<%=@pokemon.hp%>" min="0" max="200"><%=@pokemon.hp%></progress></div></td>
-          </tr>
-          <tr>
-            <td class="text-right font-weight-bold">Attack</td>
-            <td><div class='barre-show'><label for="determinate">&nbsp;</label><progress id="determinate"  value="<%=@pokemon.attack%>" min="0" max="155"> <%=@pokemon.attack%></progress></div></td>
-          </tr>
-          <tr>
-            <td class="text-right font-weight-bold">Defence</td>
-            <td><div class='barre-show'><label for="determinate">&nbsp; </label><progress id="determinate"  value="<%=@pokemon.defense%>" min="0" max="100"> <%=@pokemon.defense%> </progress></div></td>
-          </tr>
-          <tr>
-            <td class="text-right font-weight-bold">Speed</td>
-            <td><div class='barre-show'><label for="determinate">&nbsp; </label><progress id="determinate"  value="<%=@pokemon.speed%>" min="0" max="100"> <%=@pokemon.speed%> </progress></div></td>
-          </tr>
-          <tr>
-            <td class="text-right font-weight-bold">Type</td>
-            <td> <%= @pokemon.types %> </td>
-          </tr>
-          <tr>
-            <td class="text-right font-weight-bold">Abilities</td>
-            <td><%= @pokemon.abilities %></td>
-          </tr>
-        </table>
+  <div class="show">
+    <div class="pokeball"><%= image_tag "pokeball.png" %></div>
+    <h1 class="text-center"> <%= @pokemon.name %> </h1>
+    <div class="pokemon-show">
+      <div class="pokemon-show-stats">
+        <div class="col-lg-3 col-md-2  d-flex flex-wrap justify pokemon-show-stats-wrapper">
+          <table class="table table-borderless">
+            <tr>
+              <td class="text-right font-weight-bold">HP</td>
+              <td>
+                <div class='barre-show'><label for="determinate"><%=@pokemon.hp%>&nbsp;</label><progress id="determinate"  value="<%=@pokemon.hp%>" min="0" max="200"><%=@pokemon.hp%></progress></div>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-right font-weight-bold">Attack</td>
+              <td>
+                <div class='barre-show'><label for="determinate"><%=@pokemon.attack%>&nbsp;</label><progress id="determinate"  value="<%=@pokemon.attack%>" min="0" max="155"> <%=@pokemon.attack%></progress></div>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-right font-weight-bold">Defence</td>
+              <td>
+                <div class='barre-show'><label for="determinate"> <%=@pokemon.defense%> &nbsp;</label><progress id="determinate"  value="<%=@pokemon.defense%>" min="0" max="100"> <%=@pokemon.defense%> </progress></div>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-right font-weight-bold">Speed</td>
+              <td>
+                <div class='barre-show'><label for="determinate"> <%=@pokemon.speed%>&nbsp; </label><progress id="determinate"  value="<%=@pokemon.speed%>" min="0" max="100"> <%=@pokemon.speed%> </progress></div>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-right font-weight-bold">Type</td>
+              <td> <%= @pokemon.types %> </td>
+            </tr>
+            <tr>
+              <td class="text-right font-weight-bold">Abilities</td>
+              <td><%= @pokemon.abilities %></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="pokemon-show-img">
+        <%= image_tag @pokemon.image_url, alt: @pokemon.name %>
+      </div>
+      <div class="pokemon-show-booking">
+        <%if current_user.id != @pokemon.user_id%>
+          <%= simple_form_for [ @pokemon, @booking ] do |f| %>
+            <%= f.input :start_date, as: :string, input_html: { id: 'start_date' } %>
+            <%= f.input :end_date, as: :string, input_html: { id: 'end_date' }%>
+            <%= f.submit "Confirmer", class: "more_info-show" %>
+          <% end %>
+        <%end%>
       </div>
     </div>
-    <div class="pokemon-show-img">
-     <%= image_tag @pokemon.image_url, alt: @pokemon.name %>
+    <div class="description-show">
+      <h2 class="text-center"><%= @pokemon.description %></h2>
     </div>
-    <div class="pokemon-show-booking">
-      <%if current_user.id != @pokemon.user_id%>
-      <%= simple_form_for [ @pokemon, @booking ] do |f| %>
-        <%= f.input :start_date, as: :string, input_html: { id: 'start_date' } %>
-        <%= f.input :end_date, as: :string, input_html: { id: 'end_date' }%>
-        <%= f.submit "Confirmer", class: "btn btn-primary" %>
-      <% end %>
-      <%end%>
-    </div>
-
-  </div>
-  <div class="description-show">
-    <h2 class="text-center"><%= @pokemon.description %></h2>
   </div>
 </main>

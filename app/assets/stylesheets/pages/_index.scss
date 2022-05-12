@@ -2,3 +2,21 @@
 @import "home";
 @import "show";
 @import "dashboard";
+
+
+
+
+.cards-index {
+  display: flex;
+  justify-content: center;
+  gap: 5rem;
+  flex-wrap: wrap;
+
+  .pokemon-card {
+    margin-top: 9rem;
+  }
+}
+
+.new {
+  margin-top: 70px;
+}

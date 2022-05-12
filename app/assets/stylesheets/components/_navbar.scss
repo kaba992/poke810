@@ -1,6 +1,13 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+  background: linear-gradient(to bottom,
+      rgba(0, 0, 0, 0.2),
+      rgba(0, 0, 0, 0.2));
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 500;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -8,15 +15,17 @@
 }
 
 .navbar-lewagon .navbar-brand img {
-  width: 40px;
+  width: 10rem;
 }
 
+
 .search {
-  justify-content: flex-start;
+  display: flex;
+  justify-content: center;
   width: 100%;
 
   form {
-    width: 50%;
+    width: 30%;
     display: flex;
   }
 }
