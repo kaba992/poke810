@@ -28,7 +28,7 @@
             <% end%>
         <div class="pokemon-stats-wrapper">
           <div class="pokemon-stats pokemon-stats--types">
-            <p><%=pokemon.types.gsub(/[^0-9a-z ]/i, '').split.join(' | ') %></p>
+            <p><%=pokemon.types.gsub(/[^0-9a-z ]/i, '').split.join(' | ').titleize %></p>
             <p class="font-weight-bold">Type</p>
           </div>
           <span class="wrapper-vertical"></span>
@@ -53,7 +53,7 @@
         </div>
         <div class="pokemon-stats pokemon-stats--abilities">
           <p class="font-weight-bold">Abilities</p>
-          <p><%=pokemon.abilities.gsub(/[^0-9a-z ]/i, '').split.join(' | ') %></p>
+          <p><%=pokemon.abilities.gsub(/[^0-9a-z ]/i, '').split.join(' | ').titleize %></p>
         </div>
         <div class="footer">
           <p> <%= pokemon.price %>€ </p>
@@ -84,7 +84,7 @@
             <% end%>
         <div class="pokemon-stats-wrapper">
           <div class="pokemon-stats pokemon-stats--types">
-            <p><%=pokemon.types.gsub(/[^0-9a-z ]/i, '').split.join(' | ') %></p>
+            <p><%=pokemon.types.gsub(/[^0-9a-z ]/i, '').split.join(' | ').titleize %></p>
             <p class="font-weight-bold">Type</p>
           </div>
           <span class="wrapper-vertical"></span>
@@ -107,7 +107,7 @@
         </div>
         <div class="pokemon-stats pokemon-stats--abilities">
           <p class="font-weight-bold">Abilities</p>
-          <p><%=pokemon.abilities.gsub(/[^0-9a-z ]/i, '').split.join(' | ') %></p>
+          <p><%=pokemon.abilities.gsub(/[^0-9a-z ]/i, '').split.join(' | ').titleize %></p>
         </div>
         <div class="footer">
           <p> <%= pokemon.price %>€ </p>
@@ -137,7 +137,7 @@
             <% end%>
         <div class="pokemon-stats-wrapper">
           <div class="pokemon-stats pokemon-stats--types">
-            <p><%=pokemon.types.gsub(/[^0-9a-z ]/i, '').split.join(' | ') %></p>
+            <p><%=pokemon.types.gsub(/[^0-9a-z ]/i, '').split.join(' | ').titleize %></p>
             <p class="font-weight-bold">Type</p>
           </div>
           <span class="wrapper-vertical"></span>
@@ -160,7 +160,7 @@
         </div>
         <div class="pokemon-stats pokemon-stats--abilities">
           <p class="font-weight-bold">Abilities</p>
-          <p><%=pokemon.abilities.gsub(/[^0-9a-z ]/i, '').split.join(' | ') %></p>
+          <p><%=pokemon.abilities.gsub(/[^0-9a-z ]/i, '').split.join(' | ').titleize %></p>
         </div>
         <div class="footer">
           <p> <%= pokemon.price %>€ </p>

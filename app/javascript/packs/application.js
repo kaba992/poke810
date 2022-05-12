@@ -37,7 +37,7 @@ document.addEventListener("turbolinks:load", () => {
   //     loader.style.display = 'none';
   //   }, 2000);
   // })
-  
+
   // window.addEventListener('load', () => {
   //   const loader = document.getElementById('loader');
 

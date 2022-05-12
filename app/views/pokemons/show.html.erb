@@ -23,11 +23,11 @@
           </tr>
           <tr>
             <td class="text-right font-weight-bold">Type</td>
-            <td> <%= @pokemon.types %> </td>
+            <td><%= @pokemon.types.gsub(/[^0-9a-z ]/i, '').split.join(' | ').titleize %></td>
           </tr>
           <tr>
             <td class="text-right font-weight-bold">Abilities</td>
-            <td><%= @pokemon.abilities %></td>
+            <td><%= @pokemon.abilities.gsub(/[^0-9a-z ]/i, '').split.join(' | ').titleize %></td>
           </tr>
         </table>
       </div>
@@ -36,13 +36,22 @@
      <%= image_tag @pokemon.image_url, alt: @pokemon.name %>
     </div>
     <div class="pokemon-show-booking">
-      <%if current_user.id != @pokemon.user_id%>
-      <%= simple_form_for [ @pokemon, @booking ] do |f| %>
+    <% if current_user.present? %>
+      <%if current_user.id != @pokemon.user_id  %>
+        <%= simple_form_for [ @pokemon, @booking ] do |f| %>
+          <%= f.input :start_date, as: :string, input_html: { id: 'start_date' } %>
+          <%= f.input :end_date, as: :string, input_html: { id: 'end_date' }%>
+          <%= f.submit "Confirmer", class: "btn btn-primary" %>
+        <% end %>
+      <%end%>
+    <% else %>
+        <%= simple_form_for [ @pokemon, @booking ] do |f| %>
         <%= f.input :start_date, as: :string, input_html: { id: 'start_date' } %>
         <%= f.input :end_date, as: :string, input_html: { id: 'end_date' }%>
         <%= f.submit "Confirmer", class: "btn btn-primary" %>
       <% end %>
-      <%end%>
+    <% end %>
+    <span id='current-pokemon-reservation-dates' data-dates='<%= @pokemon.bookings.pending_and_validated.pluck(:start_date, :end_date).map(&:to_json) %>'></span>
     </div>
 
   </div>
