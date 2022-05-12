@@ -1,6 +1,7 @@
+
 <main data-barba="container" data-barba-namespace="home">
   <div class="banner-home">
-    <h1 class = 'text-center banner-title'>Louez vos pokemons préférés pour une semaine, un week-end ...</h1>
+    <h1 class = 'text-center banner-title'>Rent your favorite pokemons for a day, a week, a month ... </h1>
     <div class="search">
       <%= form_tag pokemons_path, method: :get do %>
         <%= text_field_tag :query,
@@ -14,7 +15,7 @@
   <div class="container-fluid">
     <%# <h1>Pages#home</h1> %>
     <%# <p>Find me in app/views/pages/home.html.erb</p> %>
-    <h3>Les plus demandés</h3>
+    <h3>The most popular</h3>
     <div class="cards-home">
       <% pokemon_asked = @pokemons.order(id: :desc).limit(5) %>
       <% pokemon_asked.each do |pokemon| %>
@@ -59,12 +60,12 @@
             <p><%=pokemon.abilities.gsub(/[^0-9a-z ]/i, '').split.join(' | ') %></p>
           </div>
           <div class="footer">
-            <p> <%= pokemon.price %>€ </p>
+            <p> <%= pokemon.price %>€/ day </p>
           </div>
         </div>
       <% end %>
     </div>
-    <h3>les plus puissants</h3>
+    <h3>The most powerfull</h3>
     <div class='cards-home'>
       <%pokemon_powerful = @pokemons.order(attack: :desc).limit(5)%>
       <% pokemon_powerful.each do |pokemon| %>
@@ -109,12 +110,12 @@
             <p><%=pokemon.abilities.gsub(/[^0-9a-z ]/i, '').split.join(' | ') %></p>
           </div>
           <div class="footer">
-            <p> <%= pokemon.price %>€ </p>
+            <p> <%= pokemon.price %>€/ day </p>
           </div>
         </div>
       <% end %>
     </div>
-    <h3>les moins chers</h3>
+    <h3>The most attractive</h3>
     <div class="cards-home">
       <%pokemon_cheaper = @pokemons.order(:price).limit(5)%>
       <% pokemon_cheaper.each do |pokemon| %>
@@ -159,7 +160,7 @@
             <p><%=pokemon.abilities.gsub(/[^0-9a-z ]/i, '').split.join(' | ') %></p>
           </div>
           <div class="footer">
-            <p> <%= pokemon.price %>€ </p>
+            <p> <%= pokemon.price %>€/ day </p>
           </div>
         </div>
       <% end %>

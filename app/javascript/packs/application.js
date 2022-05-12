@@ -7,8 +7,6 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
-import '../plugins/flatpickr'
-
 
 Rails.start()
 Turbolinks.start()
@@ -18,8 +16,6 @@ import { select2 } from 'select2'
 import luge from '@waaark/luge'
 import "controllers"
 import "bootstrap"
-
-
 
 document.addEventListener("turbolinks:load", () => {
 
@@ -52,7 +48,5 @@ document.addEventListener("turbolinks:load", () => {
       console.log(loader);
     }, 2000);
   })
-
-
 
 });
