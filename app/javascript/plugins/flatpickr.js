@@ -31,6 +31,7 @@ function object_disable_date() {
     }
   ]
   const current_booking_dates = JSON.parse(document.querySelector('#current-pokemon-reservation-dates').dataset.dates);
+  console.log(current_booking_dates)
   if (current_booking_dates.length > 0) {
 
     console.log(current_booking_dates.length)
@@ -48,5 +49,6 @@ function object_disable_date() {
     });
 
   }
+  console.log(array)
   return array
 }
