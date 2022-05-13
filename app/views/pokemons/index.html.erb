@@ -1,16 +1,7 @@
 <main data-barba="container" data-barba-namespace="index">
   <div class="container-fluid">
     <div class="banner-home">
-    <h1 class = 'text-center banner-title' style='text-shadow: 2px 2px 3px rgba(0,0,0,0.8)'>RENT YOUR FAVORITE POKEMONS FOR A DAY, A WEEK OR A EVEN A MONTH </h1>
-      <div class="search">
-        <%= form_tag pokemons_path, method: :get do %>
-          <%= text_field_tag :query,
-    params[:query],
-    class: "form-control",
-    placeholder: "Find a pokemon" %>
-          <%= submit_tag "Search", class: "btn btn-primary" %>
-        <% end %>
-      </div>
+    <h1 class = 'text-center banner-title' style='text-shadow: 2px 2px 3px rgba(0,0,0,0.8); margin-top:100px'>RENT YOUR FAVORITE POKEMONS FOR A DAY, A WEEK OR A EVEN A MONTH </h1>
     </div>
     <div class="index">
       <div class="cards-index">
@@ -53,10 +44,10 @@
                 <p><%=pokemon.abilities.gsub(/[^0-9a-z ]/i, '').split.join(' | ').titleize %></p>
               </div>
               <div class="footer">
-                <p> <%= pokemon.price %> € / day </p>
+                <p class='font-weight-bold'> <%= pokemon.price %> € / day </p>
               </div>
               <%= link_to pokemon_path(pokemon) do %>
-                <div class="more_info">More info</div>
+                <div class="more_info more_info-home">More info</div>
               <% end%>
             </div>
           <% end %>

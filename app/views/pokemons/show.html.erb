@@ -38,6 +38,10 @@
               <td class="text-right font-weight-bold">Abilities</td>
               <td><%= @pokemon.abilities.gsub(/[^0-9a-z ]/i, '').split.join(' | ').titleize %></td>
             </tr>
+            <tr>
+              <td class="text-right font-weight-bold">Trainer</td>
+              <td><%= @pokemon.user.username %></td>
+            </tr>
           </table>
         </div>
       </div>
@@ -54,7 +58,6 @@
         <%end%>
       </div>
     </div>
-    <h3 class="font-weight-bold"> Owner: <%= @user.username%></h3>
     <div class="description-show">
       <h2 class="text-center"><%= @pokemon.description %></h2>
     </div>
