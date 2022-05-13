@@ -1,0 +1,118 @@
+<main data-barba="container" data-barba-namespace="show">
+  <div class="show">
+    <div class="pokeball"><%= image_tag "pokeball.png" %></div>
+    <h1 class="text-center"> <%= @booking.pokemon.name %> </h1>
+    <div class="pokemon-show">
+      <div class="pokemon-show-stats">
+        <div class="col-lg-3 col-md-2  d-flex flex-wrap justify pokemon-show-stats-wrapper">
+          <table class="table table-borderless">
+            <tr>
+              <td class="text-right font-weight-bold">HP</td>
+              <td>
+                <div class='barre-show'><label for="determinate"><%=@booking.pokemon.hp%>&nbsp;</label><progress id="determinate"  value="<%=@booking.pokemon.hp%>" min="0" max="200"><%=@booking.pokemon.hp%></progress></div>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-right font-weight-bold">Attack</td>
+              <td>
+                <div class='barre-show'><label for="determinate"><%=@booking.pokemon.attack%>&nbsp;</label><progress id="determinate"  value="<%=@booking.pokemon.attack%>" min="0" max="155"> <%=@booking.pokemon.attack%></progress></div>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-right font-weight-bold">Defence</td>
+              <td>
+                <div class='barre-show'><label for="determinate"> <%=@booking.pokemon.defense%> &nbsp;</label><progress id="determinate"  value="<%=@booking.pokemon.defense%>" min="0" max="100"> <%=@booking.pokemon.defense%> </progress></div>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-right font-weight-bold">Speed</td>
+              <td>
+                <div class='barre-show'><label for="determinate"> <%=@booking.pokemon.speed%>&nbsp; </label><progress id="determinate"  value="<%=@booking.pokemon.speed%>" min="0" max="100"> <%=@booking.pokemon.speed%> </progress></div>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-right font-weight-bold">Type</td>
+              <td><%= @booking.pokemon.types.gsub(/[^0-9a-z ]/i, '').split.join(' | ').titleize %></td>
+            </tr>
+            <tr>
+              <td class="text-right font-weight-bold">Abilities</td>
+              <td><%= @booking.pokemon.abilities.gsub(/[^0-9a-z ]/i, '').split.join(' | ').titleize %></td>
+            </tr>
+            <tr>
+              <td class="text-right font-weight-bold">Trainer</td>
+              <td><%= current_user.id == @booking.user.id ? @booking.user.username : @booking.pokemon.user.username%> PROBLEME</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="pokemon-show-img">
+        <%= image_tag @booking.pokemon.image_url, alt: @booking.pokemon.name %>
+      </div>
+      <div class="pokemon-show-booking col-lg-3 col-md-2  d-flex flex-wrap justify">
+        <table class="table table-borderless">
+          <tr>
+            <td class="text-right font-weight-bold ">From :</td>
+            <td><%= @booking.start_date.strftime("%A %d %B, %Y") %></td>
+          </tr>
+          <tr>
+            <td class="text-right font-weight-bold ">To :</td>
+            <td><%= @booking.end_date.strftime("%A %d %B, %Y") %></td>
+          </tr>
+          <tr>
+            <td class="text-right font-weight-bold ">Price / Day :</td>
+            <td><%= @booking.pokemon.price%> €</td>
+          </tr>
+          <tr>
+            <td class="text-right font-weight-bold ">Total Amount :</td>
+            <td>
+              <%nbd = (@booking.end_date - @booking.start_date).to_i/86400.to_i%>
+              <%if nbd == 0 %>
+                <% nbd = 1%>
+              <% end %>
+              <%=  (nbd * @booking.pokemon.price).to_s(:delimited) %> €
+            </td>
+          </tr>
+          <tr>
+            <td class="text-right font-weight-bold ">Rented by : <%= @booking.user.id %></td>
+            <td><%= current_user.id == @booking.user.id ? @booking.pokemon.user.username : @booking.user.username%></td>
+          </tr>
+          <tr>
+            <td class="text-right font-weight-bold ">Status :</td>
+            <% if current_user.id == @booking.pokemon.user.id  %>
+              <td>
+                <% if @booking.status == 'pending' %>
+                  <%= simple_form_for(@booking) do |f| %>
+                    <%= f.input :status, prompt: '',collection: ['validated', 'rejected'], label:false %>
+                    <%= f.submit "Update", :class => "more_info-res"%>
+                  <% end %>
+                <% else %>
+                  <% if @booking.status =='validated' %>
+                    <p class='pokemon-booking pokemon-booking-validated'><%= @booking.status.capitalize %></p>
+                  <% elsif @booking.status =='pending' %>
+                    <p class='pokemon-booking pokemon-booking-pending'><%= @booking.status.capitalize %></p>
+                  <% else %>
+                    <p class='pokemon-booking pokemon-booking-refused'><%= @booking.status.capitalize %></p>
+                  <% end %>
+                <% end %>
+              </td>
+            <% else %>
+               <td>
+                <% if @booking.status =='validated' %>
+                  <p class='pokemon-booking pokemon-booking-validated'><%= @booking.status.capitalize %></p>
+                <% elsif @booking.status =='pending' %>
+                  <p class='pokemon-booking pokemon-booking-pending'><%= @booking.status.capitalize %></p>
+                <% else %>
+                  <p class='pokemon-booking pokemon-booking-refused'><%= @booking.status.capitalize %></p>
+                <% end %>
+               </td>
+            <% end %>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="description-show">
+      <h2 class="text-center"><%= @booking.pokemon.description %></h2>
+    </div>
+    <span id='current-pokemon-reservation-dates' data-dates='<%= @booking.pokemon.bookings.pending_and_validated.pluck(:start_date, :end_date).map(&:to_json) %>'></span>
+  </div>
+</main>

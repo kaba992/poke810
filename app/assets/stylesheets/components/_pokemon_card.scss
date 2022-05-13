@@ -122,6 +122,12 @@ a {
   border: none;
   color: #fff;
   min-width: 60%;
+    &-home {
+      position: absolute;
+      top: 410px;
+      left: 70px;
+      text-align: center
+    }
 }
 
 .wrapper-horizontal {
