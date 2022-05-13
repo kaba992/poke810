@@ -29,13 +29,15 @@ pokemon_serialized = URI.open(url).read
 
 pokemont = JSON.parse(pokemon_serialized)
 
+  if french_name[pokemon['name']] != nil
+    Pokemonbase.create!(name: french_name[pokemon['name']], official_id: official_id[pokemon['name']],
+                        types: pokemont['types'].map { |type| type['type']['name']},
+                        abilities: pokemont['abilities'].map { |ability| ability['ability']['name'] },
+                        attack: pokemont['stats'].find { |stat| stat['stat']['name'] == 'attack' }['base_stat'],
+                        defense: pokemont['stats'].find { |stat| stat['stat']['name'] == 'defense' }['base_stat'],
+                        speed: pokemont['stats'].find { |stat| stat['stat']['name'] == 'speed' }['base_stat'],
+                        hp: pokemont['stats'].find { |stat| stat['stat']['name'] == 'hp' }['base_stat'],image_url: pokemont['sprites']['other']['dream_world']['front_default'])
 
-Pokemonbase.create!(name: french_name[pokemon['name']], official_id: official_id[pokemon['name']],
-                      types: pokemont['types'].map { |type| type['type']['name']},
-                      abilities: pokemont['abilities'].map { |ability| ability['ability']['name'] },
-                      attack: pokemont['stats'].find { |stat| stat['stat']['name'] == 'attack' }['base_stat'],
-                      defense: pokemont['stats'].find { |stat| stat['stat']['name'] == 'defense' }['base_stat'],
-                      speed: pokemont['stats'].find { |stat| stat['stat']['name'] == 'speed' }['base_stat'],
-                      hp: pokemont['stats'].find { |stat| stat['stat']['name'] == 'hp' }['base_stat'],image_url: pokemont['sprites']['other']['dream_world']['front_default'])
+  end
 end
 # Fin de la seed
