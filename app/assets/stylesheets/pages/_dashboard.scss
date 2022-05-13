@@ -2,6 +2,27 @@
   margin-top: 70px;
 }
 
+.pokemon-booking-validated {
+  color: white;
+  background-color: #3bcda5;
+  border-radius: 4px;
+  padding: 4px 8px;
+}
+
+.pokemon-booking-pending {
+  color: white;
+  background-color: #FF8D29;
+  border-radius: 4px;
+  padding: 4px 8px;
+}
+
+.pokemon-booking-refused {
+  color: white;
+  background-color: #B22727;
+  border-radius: 4px;
+  padding: 4px 8px;
+}
+
 
 .pokemons-dashboard {
   display: flex;
@@ -11,9 +32,11 @@
 }
 
 .footer-dashboard {
+  font-size: 12px;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
+  padding: 0px 8px;
   width: 100%;
 }
 
@@ -25,6 +48,8 @@
   color: #fff;
   min-width: 30%;
 }
+
+
 
 .dashboard-status {
   width: 100%;

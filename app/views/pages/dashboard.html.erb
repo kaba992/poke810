@@ -12,19 +12,25 @@
               <h2 class='text-center font-weight-bold name'><%= booking.pokemon.name %></h2>
               <div class='barre-home'><label for="determinate">HP:&nbsp; </label><progress id="determinate"  value="<%=booking.pokemon.hp%>" min="0" max="155"> 50% </progress></div>
             </div>
+            <% if booking.status =='validated' %>
+              <p class='pokemon-booking-validated'><%= booking.status.capitalize %></p>
+            <% elsif booking.status =='pending' %>
+              <p class='pokemon-booking-pending'><%= booking.status.capitalize %></p>
+            <% else %>
+              <p class='pokemon-booking-refused'><%= booking.status.capitalize %></p>
+            <% end %>
+            <div class="pokemon-stats-wrapper">
+              <div class="footer-dashboard">
+                <div style='text-justify: auto'>
+                  <p><%= booking.start_date.strftime("From %d %B, %y") %> </p>
+                  <p><%= booking.end_date.strftime("To %d %B, %y") %> </p>
+                </div>
+                <p> Total : <%= booking.pokemon.price.to_s(:delimited) %> € </p>
+              </div>
+            </div>
             <%= link_to pokemon_path(booking.pokemon) do %>
               <div class="more_info">More info</div>
             <% end%>
-            <div class="pokemon-stats-wrapper">
-              <div class="footer-dashboard">
-                <div>
-                  <p><%= booking.start_date.strftime("Du %m/%d/%Y") %> </p>
-                  <p><%= booking.end_date.strftime("Au %m/%d/%Y") %> </p>
-                </div>
-                <p> <%= booking.pokemon.price %>€ </p>
-                <p><%= booking.status %> </p>
-              </div>
-            </div>
           </div>
         <% end %>
       </div>

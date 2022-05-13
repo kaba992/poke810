@@ -1,19 +1,20 @@
 
 <main data-barba="container" data-barba-namespace="home">
   <div class="banner-home">
-    <h1 class = 'text-center banner-title'>Rent your favorite pokemons for a day, a week, a month ... </h1>
+    <h1 class = 'text-center banner-title' style='text-shadow: 2px 2px 3px rgba(0,0,0,0.8)'>RENT YOUR FAVORITE POKEMONS FOR A DAY, A WEEK OR A EVEN A MONTH </h1>
     <div class="search">
       <%= form_tag pokemons_path, method: :get do %>
         <%= text_field_tag :query,
         params[:query],
         class: "form-control",
         placeholder: "Find a pokemon" %>
-     <%= button_tag(type: "submit") do%>
-      <p>search</p>
-     <% end %>
+      <%= button_tag type:'submit' do %>
+        <p class='btn btn-primary'>Search</p>
+      <% end %>
     <% end %>
     </div>
   </div>
+
   <div class="container-fluid">
     <h3>The most popular</h3>
     <div class="cards-home">
@@ -28,10 +29,6 @@
             <div class='barre-home'><label for="determinate">HP:&nbsp; </label><progress id="determinate"  value="<%=pokemon.hp%>" min="0" max="155"> 50% </progress>
             </div>
           </div>
-          <%= link_to pokemon_path(pokemon) do %>
-            <div class="more_info">More info
-            </div>
-          <% end%>
           <div class="pokemon-stats-wrapper">
             <div class="pokemon-stats pokemon-stats--types">
               <p><%=pokemon.types.gsub(/[^0-9a-z ]/i, '').split.join(' | ').titleize %></p>
@@ -60,8 +57,12 @@
             <p><%=pokemon.abilities.gsub(/[^0-9a-z ]/i, '').split.join(' | ').titleize %></p>
           </div>
           <div class="footer">
-            <p> <%= pokemon.price %>€/ day </p>
+            <p><%= pokemon.price %> € / day</p>
           </div>
+          <%= link_to pokemon_path(pokemon) do %>
+            <div class="more_info">More info
+            </div>
+          <% end%>
         </div>
       <% end %>
     </div>
@@ -78,10 +79,6 @@
             <div class='barre-home'><label for="determinate">HP:&nbsp; </label><progress id="determinate"  value="<%=pokemon.hp%>" min="0" max="155"> 50% </progress>
             </div>
           </div>
-          <%= link_to pokemon_path(pokemon) do %>
-            <div class="more_info">More info
-            </div>
-          <% end%>
           <div class="pokemon-stats-wrapper">
             <div class="pokemon-stats pokemon-stats--types">
               <p><%=pokemon.types.gsub(/[^0-9a-z ]/i, '').split.join(' | ').titleize %></p>
@@ -110,8 +107,12 @@
             <p><%=pokemon.abilities.gsub(/[^0-9a-z ]/i, '').split.join(' | ').titleize %></p>
           </div>
           <div class="footer">
-            <p> <%= pokemon.price %>€/ day </p>
+            <p><strong><%= pokemon.price %> € / day</strong></p>
           </div>
+          <%= link_to pokemon_path(pokemon) do %>
+            <div class="more_info">More info
+            </div>
+          <% end%>
         </div>
       <% end %>
     </div>
@@ -128,10 +129,6 @@
             <div class='barre-home'><label for="determinate">HP:&nbsp; </label><progress id="determinate"  value="<%=pokemon.hp%>" min="0" max="155"> 50% </progress>
             </div>
           </div>
-          <%= link_to pokemon_path(pokemon) do %>
-            <div class="more_info">More info
-            </div>
-          <% end%>
           <div class="pokemon-stats-wrapper">
             <div class="pokemon-stats pokemon-stats--types">
               <p><%=pokemon.types.gsub(/[^0-9a-z ]/i, '').split.join(' | ').titleize %></p>
@@ -160,8 +157,12 @@
             <p><%=pokemon.abilities.gsub(/[^0-9a-z ]/i, '').split.join(' | ').titleize %></p>
           </div>
           <div class="footer">
-            <p> <%= pokemon.price %>€/ day </p>
+            <p><strong><%= pokemon.price %> € / day</strong></p>
           </div>
+          <%= link_to pokemon_path(pokemon) do %>
+            <div class="more_info">More info
+            </div>
+          <% end%>
         </div>
       <% end %>
     </div>
