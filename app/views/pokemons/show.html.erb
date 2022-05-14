@@ -71,6 +71,7 @@
     <div class="description-show container" id="description">
       <h2 id="typed-string" data-controller="typed-js" class="text-center description" data-typed-js-text-value="<%=  @pokemon.description %>"><%=  @pokemon.description %></h2>
     </div>
+    
     <span id='current-pokemon-reservation-dates' data-dates='<%= @pokemon.bookings.pending_and_validated.pluck(:start_date, :end_date).map(&:to_json) %>'></span>
   </div>
 </main>
