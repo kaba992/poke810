@@ -18,6 +18,7 @@
                 <div class="pokemon-img">
                   <%=image_tag pokemon.image_url, alt: pokemon.name if pokemon.image_url != nil%>
                 </div>
+
                 <div class='pokemon-infos'>
                   <h2 class='text-center font-weight-bold name'><%= pokemon.name %></h2>
                   <div class='barre-home'><label for="determinate">HP:&nbsp; </label><progress id="determinate"  value="<%=pokemon.hp%>" min="0" max="155"> 50% </progress></div>
@@ -29,12 +30,13 @@
                   <div class="more_info">More info</div>
                 <% end%>
               </div >
+
             </div>
           <% end %>
         </div>
       </div>
       <div>
-        <h2>My reservation </h2>
+        <h2>My reservations </h2>
         <h3>As renter</h3>
         <div class="pokemons-dashboard swiper-container">
           <div class="swiper-wrapper">
@@ -124,6 +126,7 @@
                     <div class="more_info">More info</div>
                   <% end%>
                 </div>
+
               </div>
             <% end %>
           </div>
