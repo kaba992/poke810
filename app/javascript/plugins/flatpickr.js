@@ -2,8 +2,7 @@ import flatpickr from 'flatpickr'
 import 'flatpickr/dist/flatpickr.min.css'
 import rangePlugin from 'flatpickr/dist/plugins/rangePlugin'
 
-  const totalDays = document.getElementById("total-days")
-  const dayPrice = document.getElementById("day-price").innerText;
+
 
 document.addEventListener("turbolinks:load", () => {
   flatpickr('#start_date', {
@@ -19,6 +18,16 @@ document.addEventListener("turbolinks:load", () => {
     'disable': object_disable_date()
 
   });
+
+  if (document.getElementById("day-price")) {
+    [start_date, end_date].forEach(date => {
+      date.addEventListener("change", () => {
+        document.getElementById('price').classList.remove('d-none');
+        dynamicPrice();
+      });
+    })
+  }
+
 });
 
 
@@ -49,10 +58,13 @@ function object_disable_date() {
   return array
 }
 
-const totalPriceElement = document.getElementById("total-price");
 const dynamicPrice = () => {
+  const totalDays = document.getElementById("total-days")
+  const dayPrice = (document.getElementById("day-price")) ? document.getElementById("day-price").innerText : 0
+  const totalPriceElement = document.getElementById("total-price");
   let dateDiffInMilliseconds = new Date(start_date.value.split(' ')[2]) - new Date(start_date.value.split(' ')[0]);
-  let nbDays = dateDiffInMilliseconds / 86_400_000;
+  let nbDays = (isNaN(dateDiffInMilliseconds)) ? 1 : dateDiffInMilliseconds / 86_400_000;
+  console.log(nbDays)
 
 
   if(start_date.value && end_date.value) {
@@ -62,8 +74,3 @@ const dynamicPrice = () => {
     totalPriceElement.innerText = nbDays * dayPrice
   }
 };
-[start_date, end_date].forEach(date => {
-  date.addEventListener("change", (event) => {
-    dynamicPrice();
-  });
-})

@@ -56,26 +56,22 @@
             <%= f.input :start_date, as: :string, input_html: { id: 'start_date' } %>
             <%= f.input :end_date, as: :string, input_html: { id: 'end_date' }%>
             <%= f.submit "Confirm", class: "more_info-show" %>
-          <% end %>
-
-          <div class="container">
             <div class="total-price-show">
-              <p>Reservation for <span id="total-days">0</span> days</p>
-              <p>Total Price     <span id="total-price">0</span> € </p>
+            <tr>
+              <td class="text-right font-weight-bold">Price per day :</td>
+              <td><span id="day-price" class='font-weight-normal'><%= @pokemon.price %> </span>€</td>
+                 <div class='d-none' id='price'>
+                    <td class="text-right font-weight-bold">Total Amount :</td>
+                    <td><span id="total-price"></span> € for <span id="total-days"></span> days</p></td>
+                 </div>
+            </tr>
             </div>
-          </div>
-
+          <% end %>
         <%end%>
       </div>
     </div>
 
-    <div class="trainer-show">
-      <h3> Trainer: <%=@user.username%></h3>
-      <h3><span id="day-price"><%= @pokemon.price %></span> € / day</h3>
-    </div>
-
-
-    <div class="description-show">
+    <div class="description-show container">
       <h2 class="text-center"><%= @pokemon.description %></h2>
     </div>
     <span id='current-pokemon-reservation-dates' data-dates='<%= @pokemon.bookings.pending_and_validated.pluck(:start_date, :end_date).map(&:to_json) %>'></span>
