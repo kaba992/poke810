@@ -1,13 +1,15 @@
 <main data-barba="container" data-barba-namespace="new">
-  <div class="new">
-    <h1>Add a pokemon</h1>
-    <div class="container">
-      <%= simple_form_for(@pokemon) do |f| %>
-        <%= f.input :id, as: :select, label: 'Pokemon', collection: @pokemons.order(:name), prompt: "Choose a pokemon", input_html: {class: "js-example-basic-single"} %>
-        <%= f.input :description%>
-        <%= f.input :price %>
-        <%= f.submit "Submit new pokemon", class: "morph_button" %>
-      <% end %>
+  <div class="container-fluid">
+    <div class="new">
+      <h1>Add a pokemon</h1>
+      <div class="container">
+        <%= simple_form_for(@pokemon) do |f| %>
+          <%= f.input :id, as: :select, label: 'Pokemon', collection: @pokemons.order(:name), prompt: "Choose a pokemon", input_html: {class: "js-example-basic-single"} %>
+          <%= f.input :description%>
+          <%= f.input :price %>
+          <%= f.submit "Submit new pokemon", class: "morph_button" %>
+        <% end %>
+      </div>
     </div>
   </div>
 </main>
