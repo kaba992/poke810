@@ -1,8 +1,29 @@
 import flatpickr from 'flatpickr'
 import 'flatpickr/dist/flatpickr.min.css'
 import rangePlugin from 'flatpickr/dist/plugins/rangePlugin'
+// isa
+  const totalDays = document.getElementById("total-days")
+  const dayPrice = document.getElementById("day-price").innerText;
 
+  const totalPriceElement = document.getElementById("total-price");
+  const dynamicPrice = () => {
+    let dateDiffInMilliseconds = new Date(start_date.value.split(' ')[2]) - new Date(start_date.value.split(' ')[0]);
+    let nbDays = dateDiffInMilliseconds / 86_400_000;
 
+    if(start_date.value && end_date.value) {
+      totalDays.innerText = nbDays
+    }
+    if(start_date.value && end_date.value) {
+      totalPriceElement.innerText = nbDays * dayPrice
+    }
+  };
+  [start_date, end_date].forEach(date => {
+    date.addEventListener("change", (event) => {
+      dynamicPrice();
+    });
+  })
+
+// isa fin
 document.addEventListener("turbolinks:load", () => {
 
 
@@ -19,6 +40,7 @@ document.addEventListener("turbolinks:load", () => {
     'disable': object_disable_date()
 
   });
+
 });
 
 
@@ -34,7 +56,7 @@ function object_disable_date() {
   console.log(current_booking_dates)
   if (current_booking_dates.length > 0) {
 
-    console.log(current_booking_dates.length)
+
 
     current_booking_dates.forEach((booking) => {
 
@@ -48,7 +70,8 @@ function object_disable_date() {
       )
     });
 
+
   }
-  console.log(array)
-  return array
+
+  return array;
 }

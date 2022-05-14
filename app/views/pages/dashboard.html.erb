@@ -25,7 +25,11 @@
                   <p><%= booking.start_date.strftime("From %d %B, %y") %> </p>
                   <p><%= booking.end_date.strftime("To %d %B, %y") %> </p>
                 </div>
-                <p> Total : <%= booking.pokemon.price.to_s(:delimited) %> € </p>
+               <%nbd = (booking.end_date - booking.start_date).to_i/86400.to_i%>
+               <%if nbd == 0 %>
+                <% nbd = 1%>
+               <% end %>
+                <p> Total : <%=  (nbd * booking.pokemon.price).to_s(:delimited) %> € </p>
               </div>
             </div>
             <%= link_to pokemon_path(booking.pokemon) do %>
@@ -81,7 +85,11 @@
                   <p><%= booking.start_date.strftime("Du %m/%d/%Y") %> </p>
                   <p><%= booking.end_date.strftime("Au %m/%d/%Y") %> </p>
                 </div>
-                <p> <%= booking.pokemon.price %>€ </p>
+                <%nbd = (booking.end_date - booking.start_date).to_i/86400.to_i%>
+               <%if nbd == 0 %>
+                <% nbd = 1%>
+               <% end %>
+                <p> Total : <%=  (nbd * booking.pokemon.price).to_s(:delimited) %> € </p>
               </div>
             </div>
             <div class="dashboard-status">
