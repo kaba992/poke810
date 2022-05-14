@@ -2,119 +2,131 @@
   <div class="container-fluid">
     <div class="dashboard">
       <h2>My pokemon currently available on the platform</h2>
-      <div class="pokemons-dashboard">
-        <div class="pokemon-card">
-          <div class="pokemon-img">
+      <div class="pokemons-dashboard swiper-container">
+        <div class="swiper-wrapper">
+          <div class="add-pokemon">
+            <div class="pokemon-img">
               <%=image_tag 'add_pokemon.png', alt: 'add pokemon' %>
+            </div>
+            <%= link_to new_pokemon_path do %>
+              <div class="more_info">Add a new pokemon</div>
+            <% end %>
           </div>
-          <%= link_to new_pokemon_path do %>
-          <div class="more_info">Add a new pokemon</div>
+          <% @pokemons_owner.reverse.each do |pokemon| %>
+            <div class="swiper-slide">
+              <div class='pokemon-card'>
+                <div class="pokemon-img">
+                  <%=image_tag pokemon.image_url, alt: pokemon.name if pokemon.image_url != nil%>
+                </div>
+                <div class='pokemon-infos'>
+                  <h2 class='text-center font-weight-bold name'><%= pokemon.name %></h2>
+                  <div class='barre-home'><label for="determinate">HP:&nbsp; </label><progress id="determinate"  value="<%=pokemon.hp%>" min="0" max="155"> 50% </progress></div>
+                </div>
+                <div>
+                  <p>Currently rented</p>
+                </div>
+                <%= link_to pokemon_path(pokemon) do %>
+                  <div class="more_info">More info</div>
+                <% end%>
+              </div >
+            </div>
           <% end %>
         </div>
-        <% @pokemons_owner.reverse.each do |pokemon| %>
-          <div class='pokemon-card'>
-            <div class="pokemon-img">
-              <%=image_tag pokemon.image_url, alt: pokemon.name if pokemon.image_url != nil%>
-            </div>
-            <div class='pokemon-infos'>
-              <h2 class='text-center font-weight-bold name'><%= pokemon.name %></h2>
-              <div class='barre-home'><label for="determinate">HP:&nbsp; </label><progress id="determinate"  value="<%=pokemon.hp%>" min="0" max="155"> 50% </progress></div>
-            </div>
-            <div>
-              <p>Currently rented</p>
-            </div>
-            <%= link_to pokemon_path(pokemon) do %>
-              <div class="more_info">More info</div>
-            <% end%>
-            link_to
-          </div >
-        <% end %>
       </div>
       <div>
         <h2>My reservation </h2>
         <h3>As renter</h3>
-        <div class="pokemons-dashboard">
-          <% @bookings_booker.reverse.each do |booking| %>
-            <div class='pokemon-card'>
-              <div class="pokemon-img">
-                <%=image_tag booking.pokemon.image_url, alt: booking.pokemon.name if booking.pokemon.image_url != nil%>
-              </div>
-              <div class='pokemon-infos'>
-                <h2 class='text-center font-weight-bold name'><%= booking.pokemon.name %></h2>
-                <div class='barre-home'><label for="determinate">HP:&nbsp; </label><progress id="determinate"  value="<%=booking.pokemon.hp%>" min="0" max="155"> 50% </progress></div>
-              </div>
-              <div class="pokemon-stats-wrapper">
-                <div class="footer-dashboard" style='font-size: 16px'>
-                  <div style='text-justify: auto'>
-                    <p><%= booking.start_date.strftime("From %d %B, %y") %> </p>
-                    <p><%= booking.end_date.strftime("To %d %B, %y") %> </p>
+        <div class="pokemons-dashboard swiper-container">
+          <div class="swiper-wrapper">
+            <% @bookings_booker.reverse.each do |booking| %>
+              <div class="swiper-slide">
+                <div class='pokemon-card'>
+                  <div class="pokemon-img">
+                    <%=image_tag booking.pokemon.image_url, alt: booking.pokemon.name if booking.pokemon.image_url != nil%>
                   </div>
-                <%nbd = (booking.end_date - booking.start_date).to_i/86400.to_i%>
-                <%if nbd == 0 %>
-                  <% nbd = 1%>
-                <% end %>
-                <p> Total : <%=  (nbd * booking.pokemon.price).to_s(:delimited) %> € </p>
-              <% if booking.status =='validated' %>
-                <p class='pokemon-booking pokemon-booking-validated'><%= booking.status.capitalize %></p>
-              <% elsif booking.status =='pending' %>
-                <p class='pokemon-booking pokemon-booking-pending'><%= booking.status.capitalize %></p>
-              <% else %>
-                <p class='pokemon-booking pokemon-booking-refused'><%= booking.status.capitalize %></p>
-              <% end %>
+                  <div class='pokemon-infos'>
+                    <h2 class='text-center font-weight-bold name'><%= booking.pokemon.name %></h2>
+                    <div class='barre-home'><label for="determinate">HP:&nbsp; </label><progress id="determinate"  value="<%=booking.pokemon.hp%>" min="0" max="155"> 50% </progress></div>
+                  </div>
+                  <div class="pokemon-stats-wrapper">
+                    <div >
+                      <p><%= booking.start_date.strftime("From %d %B, %y") %> </p>
+                      <p><%= booking.end_date.strftime("To %d %B, %y") %> </p>
+                    </div>
+                    <div class="status-as-renter">
+                      <% if booking.status =='validated' %>
+                        <p class='pokemon-booking pokemon-booking-validated'><%= booking.status.capitalize %></p>
+                      <% elsif booking.status =='pending' %>
+                        <p class='pokemon-booking pokemon-booking-pending'><%= booking.status.capitalize %></p>
+                      <% else %>
+                        <p class='pokemon-booking pokemon-booking-refused'><%= booking.status.capitalize %></p>
+                      <% end %>
+                    </div>
+                  </div>
+                  <div class="total">
+                    <%nbd = (booking.end_date - booking.start_date).to_i/86400.to_i%>
+                    <%if nbd == 0 %>
+                      <% nbd = 1%>
+                    <% end %>
+                    <p> <span class="font-weight-bold">Total :</span>  <%=  (nbd * booking.pokemon.price).to_s(:delimited) %> € </p>
+                  </div>
+                  <%= link_to booking_path(booking) do %>
+                    <div class="more_info">More info</div>
+                  <% end%>
                 </div>
               </div>
-              <%= link_to booking_path(booking) do %>
-                <div class="more_info">More info</div>
-              <% end%>
-            </div>
-          <% end %>
+            <% end %>
+          </div>
         </div>
-
         <h3>As owner</h3>
-        <div class="pokemons-dashboard">
-          <% @bookings_owner.sort.reverse.each do |booking| %>
-            <div class='pokemon-card'>
-              <div class="pokemon-img">
-                <%=image_tag booking.pokemon.image_url, alt: booking.pokemon.name if booking.pokemon.image_url != nil%>
-              </div>
-              <div class='pokemon-infos'>
-                <h2 class='text-center font-weight-bold name'><%= booking.pokemon.name %></h2>
-                <div class='barre-home'><label for="determinate">HP:&nbsp; </label><progress id="determinate"  value="<%=booking.pokemon.hp%>" min="0" max="155"> 50% </progress></div>
-              </div>
-              <div class="dashboard-status">
-                <% if booking.status == 'pending' %>
-                  <%= simple_form_for(booking) do |f| %>
-                    <%= f.input :status, prompt: '',collection: ['validated', 'rejected'], label:false %>
-                    <%= f.submit "Update", :class => "more_info-res"%>
-                  <% end %>
-                <% else %>
-              <% if booking.status =='validated' %>
-                <p class='pokemon-booking pokemon-booking-validated'><%= booking.status.capitalize %></p>
-              <% elsif booking.status =='pending' %>
-                <p class='pokemon-booking pokemon-booking-pending'><%= booking.status.capitalize %></p>
-              <% else %>
-                <p class='pokemon-booking pokemon-booking-refused'><%= booking.status.capitalize %></p>
-              <% end %>
-                <% end %>
-              </div>
-              <div class="pokemon-stats-wrapper">
-                <div class="footer-dashboard" style='font-size: 16px'>
-                  <div style='text-justify: auto'>
-                    <p><%= booking.start_date.strftime("From %d %B, %y") %> </p>
-                    <p><%= booking.end_date.strftime("To %d %B, %y") %> </p>
+        <div class="pokemons-dashboard swiper-container">
+          <div class="swiper-wrapper">
+            <% @bookings_owner.sort.reverse.each do |booking| %>
+              <div class="swiper-slide">
+                <div class='pokemon-card'>
+                  <div class="pokemon-img">
+                    <%=image_tag booking.pokemon.image_url, alt: booking.pokemon.name if booking.pokemon.image_url != nil%>
                   </div>
-                <%nbd = (booking.end_date - booking.start_date).to_i/86400.to_i%>
-                <%if nbd == 0 %>
-                  <% nbd = 1%>
-                <% end %>
-                <p> Total Amount : <%=  (nbd * booking.pokemon.price).to_s(:delimited) %> € </p>
+                  <div class='pokemon-infos'>
+                    <h2 class='text-center font-weight-bold name'><%= booking.pokemon.name %></h2>
+                    <div class='barre-home'><label for="determinate">HP:&nbsp; </label><progress id="determinate"  value="<%=booking.pokemon.hp%>" min="0" max="155"> 50% </progress></div>
+                  </div>
+                  <div class="pokemon-stats-wrapper">
+                    <div >
+                      <p><%= booking.start_date.strftime("From %d %B, %y") %> </p>
+                      <p><%= booking.end_date.strftime("To %d %B, %y") %> </p>
+                    </div>
+                    <div class="total">
+                      <%nbd = (booking.end_date - booking.start_date).to_i/86400.to_i%>
+                      <%if nbd == 0 %>
+                        <% nbd = 1%>
+                      <% end %>
+                      <p> <span class="font-weight-bold">Total :</span>  <%=  (nbd * booking.pokemon.price).to_s(:delimited) %> € </p>
+                    </div>
+                  </div>
+                  <div class="status-as-renter">
+                    <% if booking.status == 'pending' %>
+                      <%= simple_form_for(booking) do |f| %>
+                        <%= f.input :status, prompt: '',collection: ['validated', 'rejected'], label:false %>
+                        <%= f.submit "Update", :class => "more_info-res"%>
+                      <% end %>
+                    <% else %>
+                      <% if booking.status =='validated' %>
+                        <p class='pokemon-booking pokemon-booking-validated'><%= booking.status.capitalize %></p>
+                      <% elsif booking.status =='pending' %>
+                        <p class='pokemon-booking pokemon-booking-pending'><%= booking.status.capitalize %></p>
+                      <% else %>
+                        <p class='pokemon-booking pokemon-booking-refused'><%= booking.status.capitalize %></p>
+                      <% end %>
+                    <% end %>
+                  </div>
+                  <%= link_to booking_path(booking) do %>
+                    <div class="more_info">More info</div>
+                  <% end%>
                 </div>
               </div>
-              <%= link_to booking_path(booking) do %>
-                <div class="more_info">More info</div>
-              <% end%>
-            </div>
-          <% end %>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>

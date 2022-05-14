@@ -1,5 +1,5 @@
 <main data-barba="container" data-barba-namespace="show">
-  <div class="show">
+  <div class="show-show">
     <div class="pokeball"><%= image_tag "pokeball.png" %></div>
     <h1 class="text-center"> <%= @booking.pokemon.name %> </h1>
     <div class="pokemon-show">
@@ -48,7 +48,7 @@
       <div class="pokemon-show-img">
         <%= image_tag @booking.pokemon.image_url, alt: @booking.pokemon.name %>
       </div>
-      <div class="pokemon-show-booking col-lg-3 col-md-2  d-flex flex-wrap justify">
+      <div class="pokemon-show-booking ">
         <table class="table table-borderless">
           <tr>
             <td class="text-right font-weight-bold ">From :</td>
@@ -96,7 +96,7 @@
                 <% end %>
               </td>
             <% else %>
-               <td>
+              <td>
                 <% if @booking.status =='validated' %>
                   <p class='pokemon-booking pokemon-booking-validated'><%= @booking.status.capitalize %></p>
                 <% elsif @booking.status =='pending' %>
@@ -104,7 +104,7 @@
                 <% else %>
                   <p class='pokemon-booking pokemon-booking-refused'><%= @booking.status.capitalize %></p>
                 <% end %>
-               </td>
+              </td>
             <% end %>
           </tr>
         </table>
