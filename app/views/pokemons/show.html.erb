@@ -74,6 +74,7 @@
     <div class="description-show container">
       <h2 class="text-center"><%= @pokemon.description %></h2>
     </div>
+    
     <span id='current-pokemon-reservation-dates' data-dates='<%= @pokemon.bookings.pending_and_validated.pluck(:start_date, :end_date).map(&:to_json) %>'></span>
   </div>
 </main>
