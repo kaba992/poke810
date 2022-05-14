@@ -24,7 +24,13 @@
                   <div class='barre-home'><label for="determinate">HP:&nbsp; </label><progress id="determinate"  value="<%=pokemon.hp%>" min="0" max="155"> 50% </progress></div>
                 </div>
                 <div>
-                  <p>Currently rented</p>
+                  <%status = 'Available'%>
+                  <%pokemon.bookings.pending_and_validated.each do |b|%>
+                    <%if b.start_date <= Date.today && b.end_date >= Date.today%>
+                      <%status = "Currently Rented"%>
+                    <%end%>
+                  <%end%>
+                  <p><%=status%></p>
                 </div>
                 <%= link_to pokemon_path(pokemon) do %>
                   <div class="more_info">More info</div>
@@ -35,7 +41,7 @@
           <% end %>
         </div>
       </div>
-      <div>
+      <div class='reservation-container'>
         <h2>My reservations </h2>
         <h3>As renter</h3>
         <div class="pokemons-dashboard swiper-container">
