@@ -45,41 +45,37 @@ const transAnim = bodymovin.loadAnimation({
   animType: 'svg',
   loop: false,
   autoplay: false,
-  path: 'https://assets9.lottiefiles.com/private_files/lf30_rBOODA.json',
-
+  path: 'https://assets5.lottiefiles.com/temp/lf20_pYq0yz.json',
+  rendererSettings: {
+    preserveAspectRatio: 'xMinYMin slice'
+  }
 });
 
 
-window.onload = () => {
-
-transition.classList.add('is-active');
+// window.onload = () => {
 
 
-  transAnim.goToAndPlay(0, true)
-  setTimeout(() => {
+//   transition.classList.remove('is-active')
 
-    transition.classList.remove('is-active')
-  }, 2000)
 
-}
-
+//   for (let i = 0; i < anchors.length; i++) {
+//     const anchor = anchors[i]
+//     anchor.addEventListener('click', (e) => {
+//       e.preventDefault()
+//       let target = e.target.href
+//       console.log(target);
+//       transition.classList.add('is-active')
+//       transAnim.goToAndPlay(0, true)
+//       // loader.goToAndStop(0, false)
+//       setTimeout(() => {
+//         window.location.href = target
+//       }, 1000)
+//     })
+//   }
+// }
 
 
 document.addEventListener("turbolinks:load", () => {
-
-  const btnSearch = document.querySelector(".searchbtn");
-  const input = document.querySelector(".zone-text");
-
-  btnSearch.addEventListener("click", function (e) {
-    e.preventDefault();
-    if (!input.classList.contains("active")) {
-      TweenMax.fromTo(input, 0.5, { opacity: 0, scaleX: 0 }, { opacity: 1, scaleX: 1 });
-      input.classList.add("active");
-    } else {
-      TweenMax.fromTo(input, 0.5, { opacity: 1, scaleX: 0 }, { opacity: 0, scaleX: 0 });
-      input.classList.remove("active");
-    }
-  });
 
   $('.js-example-basic-single').select2();
 
