@@ -1,0 +1,24 @@
+.pokemon-show {
+
+
+
+  &-booking {
+    perspective: 400px;
+
+    table {
+      transition: .3s;
+      transform: rotateY(-25deg);
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+
+      &:hover {
+        transform: rotateY(0deg);
+      }
+
+      label {
+        width: 11.5rem;
+      }
+    }
+  }
+}

@@ -1,28 +1,73 @@
 .dashboard {
   margin-top: 70px;
+
+  .pokemon {
+    &-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 80px 12px 20px;
+      border-radius: 10px;
+      width: 300px;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+      gap: 1.5rem;
+
+      &-wrapper {
+        transform: perspective(400px) rotateX(0deg) rotateY(0deg);
+      }
+    }
+
+    &-img {
+      position: absolute;
+      top: -100px;
+
+      img {
+        width: 10rem;
+        height: 10rem;
+      }
+    }
+
+    &-stats {
+      & {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        gap: 0.5rem;
+      }
+
+      &-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+      }
+    }
+
+  }
 }
 
-.pokemon-booking-validated {
+
+.pokemon-booking {
   color: white;
-  background-color: #3bcda5;
   border-radius: 4px;
   padding: 4px 8px;
-}
+  text-align: center;
 
-.pokemon-booking-pending {
-  color: white;
-  background-color: #FF8D29;
-  border-radius: 4px;
-  padding: 4px 8px;
-}
+  &-validated {
+    background-color: #3bcda5;
+  }
 
-.pokemon-booking-refused {
-  color: white;
-  background-color: #B22727;
-  border-radius: 4px;
-  padding: 4px 8px;
-}
+  &-pending {
+    background-color: #FF8D29;
+  }
 
+  &-refused {
+    background-color: #B22727;
+
+  }
+}
 
 .pokemons-dashboard {
   display: flex;
@@ -31,14 +76,7 @@
   margin-top: 8rem;
 }
 
-.footer-dashboard {
-  font-size: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0px 8px;
-  width: 100%;
-}
+
 
 .more_info-res {
   padding: 7px 15px;
@@ -56,9 +94,40 @@
 
   form {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-around;
     width: 100%;
 
+  }
+}
+
+.add-pokemon {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 80px 147px 20px;
+  border-radius: 10px;
+  width: 300px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+  gap: 1.5rem;
+  margin-right: 5.5rem;
+  width: 300px;
+
+  .more_info {
+    position: absolute;
+    bottom: 7.5%;
+    left: 50%;
+    transform: translateX(-50%);
+    align-items: flex-end;
+    width: 75%;
+  }
+}
+
+.status-as-renter {
+  form {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
   }
 }

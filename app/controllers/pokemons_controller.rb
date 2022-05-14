@@ -13,7 +13,6 @@ class PokemonsController < ApplicationController
     @pokemon = Pokemon.find(params[:id])
     @booking = Booking.new
     @user = User.find(@pokemon.user_id)
-
   end
 
   def new

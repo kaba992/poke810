@@ -1,5 +1,5 @@
 <main data-barba="container" data-barba-namespace="show">
-  <div class="show">
+  <div class="show-show">
     <div class="pokeball"><%= image_tag "pokeball.png" %></div>
     <h1 class="text-center"> <%= @pokemon.name %> </h1>
     <div class="pokemon-show">
@@ -39,6 +39,11 @@
               <td><%= @pokemon.abilities.gsub(/[^0-9a-z ]/i, '').split.join(' | ').titleize %></td>
             </tr>
 
+            <tr>
+              <td class="text-right font-weight-bold">Trainer</td>
+              <td><%= @pokemon.user.username %></td>
+            </tr>
+
           </table>
         </div>
       </div>
@@ -52,7 +57,7 @@
             <%= f.input :end_date, as: :string, input_html: { id: 'end_date' }%>
             <%= f.submit "Confirm", class: "more_info-show" %>
           <% end %>
-<%# isa %>
+
           <div class="container">
             <div class="total-price-show">
               <p>Reservation for <span id="total-days">0</span> days</p>
@@ -63,14 +68,16 @@
         <%end%>
       </div>
     </div>
+
     <div class="trainer-show">
       <h3> Trainer: <%=@user.username%></h3>
       <h3><span id="day-price"><%= @pokemon.price %></span> € / day</h3>
     </div>
 
+
     <div class="description-show">
       <h2 class="text-center"><%= @pokemon.description %></h2>
     </div>
-    <span id='current-pokemon-reservation-dates' data-dates='<%= @pokemon.bookings.pending_and_validated.pluck(:start_date, :end_date).map(&:to_json) %>'></span>
+
   </div>
 </main>
