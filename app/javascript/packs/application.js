@@ -23,21 +23,6 @@ import "controllers"
 import "bootstrap"
 import "../plugins/flatpickr.js"
 
-// const loader = document.getElementById('loader');
-// loader.style.display = 'flex';
-// const loading = bodymovin.loadAnimation({
-//   container: loader, // the dom element that will contain the animation
-//   renderer: 'svg',
-//   loop: true,
-//   autoplay: true,
-//   path: 'https://assets9.lottiefiles.com/private_files/lf30_rBOODA.json' // the path to the animation json
-// });
-// setTimeout(() => {
-//   loader.style.display = 'none';
-//   console.log(loader);
-// }, 2000);
-
-const anchors = document.querySelectorAll('a')
 const transition = document.querySelector('.transition');
 
 const transAnim = bodymovin.loadAnimation({
@@ -45,40 +30,45 @@ const transAnim = bodymovin.loadAnimation({
   animType: 'svg',
   loop: false,
   autoplay: false,
-  path: 'https://assets5.lottiefiles.com/temp/lf20_pYq0yz.json',
-  rendererSettings: {
-    preserveAspectRatio: 'xMinYMin slice'
-  }
+  path: 'https://assets9.lottiefiles.com/private_files/lf30_rBOODA.json',
+
 });
 
 
-// window.onload = () => {
+window.onload = () => {
+
+transition.classList.add('is-active');
 
 
-//   transition.classList.remove('is-active')
+  transAnim.goToAndPlay(0, true)
+  setTimeout(() => {
+
+    transition.classList.remove('is-active')
+  }, 2000)
+
+}
 
 
-//   for (let i = 0; i < anchors.length; i++) {
-//     const anchor = anchors[i]
-//     anchor.addEventListener('click', (e) => {
-//       e.preventDefault()
-//       let target = e.target.href
-//       console.log(target);
-//       transition.classList.add('is-active')
-//       transAnim.goToAndPlay(0, true)
-//       // loader.goToAndStop(0, false)
-//       setTimeout(() => {
-//         window.location.href = target
-//       }, 1000)
-//     })
-//   }
-// }
 
 
 document.addEventListener("turbolinks:load", () => {
 
   $('.js-example-basic-single').select2();
 
+  const btnSearch = document.querySelector(".searchbtn");
+  const input = document.querySelector(".zone-text");
+
+  btnSearch.addEventListener("click", function (e) {
+    e.preventDefault();
+    if (!input.classList.contains("active")) {
+      TweenMax.fromTo(input, 0.5, { opacity: 0, scaleX: 0 }, { opacity: 1, scaleX: 1 });
+      input.classList.add("active");
+    } else {
+      TweenMax.fromTo(input, 0.5, { opacity: 1, scaleX: 0 }, { opacity: 0, scaleX: 0 });
+      input.classList.remove("active");
+    }
+  });
+  
   // animation sho pokemon
   const pokemon = document.querySelector(".pokemon-show-img");
   const pokeball = document.querySelector(".pokeball");

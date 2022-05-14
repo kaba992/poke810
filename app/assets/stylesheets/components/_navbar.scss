@@ -9,6 +9,7 @@
   width: 100%;
   z-index: 500;
   height: 70px;
+  color: #fff;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -22,8 +23,9 @@
 
 .search {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   width: 100%;
+  transition: transform 0.5s ease-in-out;
 
   form {
     width: 30%;
@@ -31,3 +33,15 @@
   }
 }
 
+.menu {
+  width: 20rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.searchbtn {
+  width: 2rem;
+}
