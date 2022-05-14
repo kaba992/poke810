@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
-
 .show-show {
   position: relative;
   margin-top: 70px;
@@ -177,11 +175,9 @@
 
   h2 {
     font-size: 16px;
-    text-justify: auto;
-    font-family: 'VT323', monospace;
+    text-justify: auto
   }
 }
-
 
 .trainer-show {
   margin: 0px 64px;
@@ -189,7 +185,6 @@
   justify-content: space-between;
   color: black
 }
-
 .total-price-show {
   margin: 12px;
 }

@@ -38,10 +38,12 @@
               <td class="text-right font-weight-bold">Abilities</td>
               <td><%= @pokemon.abilities.gsub(/[^0-9a-z ]/i, '').split.join(' | ').titleize %></td>
             </tr>
+
             <tr>
               <td class="text-right font-weight-bold">Trainer</td>
               <td><%= @pokemon.user.username %></td>
             </tr>
+
           </table>
         </div>
       </div>
@@ -64,16 +66,13 @@
                  </div>
             </tr>
             </div>
-          </div>
+          <% end %>
         <%end%>
       </div>
     </div>
-    <div class="trainer-show">
-      <h3> Trainer: <%=@user.username%></h3>
-      <h3><span id="day-price"><%= @pokemon.price %></span> € / day</h3>
-    </div>
-    <div class="description-show container" id="description">
-      <h2 id="typed-string" data-controller="typed-js" class="text-center description" data-typed-js-text-value="<%=  @pokemon.description %>"><%=  @pokemon.description %></h2>
+
+    <div class="description-show container">
+      <h2 class="text-center"><%= @pokemon.description %></h2>
     </div>
     <span id='current-pokemon-reservation-dates' data-dates='<%= @pokemon.bookings.pending_and_validated.pluck(:start_date, :end_date).map(&:to_json) %>'></span>
   </div>
