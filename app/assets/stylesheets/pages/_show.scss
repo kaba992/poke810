@@ -167,10 +167,18 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 250px;
-  width: 100%;
+  height: auto;
+  width: 60%;
+  border: thick double #22CBA8;
+  padding: 16px 8px;
+  margin-top: 70px;
+
+  h2 {
+    font-size: 16px;
+    text-justify: auto
+  }
 }
-// isa
+
 .trainer-show {
   margin: 0px 64px;
   display: flex;
@@ -178,5 +186,5 @@
   color: black
 }
 .total-price-show {
-  margin: 64px;
+  margin: 12px;
 }

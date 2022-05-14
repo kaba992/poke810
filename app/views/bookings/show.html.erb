@@ -40,7 +40,7 @@
             </tr>
             <tr>
               <td class="text-right font-weight-bold">Trainer</td>
-              <td><%= current_user.id == @booking.user.id ? @booking.user.username : @booking.pokemon.user.username%> PROBLEME</td>
+              <td><%= @booking.pokemon.user.username%></td>
             </tr>
           </table>
         </div>
@@ -74,7 +74,7 @@
           </tr>
           <tr>
             <td class="text-right font-weight-bold ">Rented by : <%= @booking.user.id %></td>
-            <td><%= current_user.id == @booking.user.id ? @booking.pokemon.user.username : @booking.user.username%></td>
+            <td><%= @booking.user.username%></td>
           </tr>
           <tr>
             <td class="text-right font-weight-bold ">Status :</td>
@@ -110,9 +110,8 @@
         </table>
       </div>
     </div>
-    <div class="description-show">
+    <div class="description-show container">
       <h2 class="text-center"><%= @booking.pokemon.description %></h2>
     </div>
-    <span id='current-pokemon-reservation-dates' data-dates='<%= @booking.pokemon.bookings.pending_and_validated.pluck(:start_date, :end_date).map(&:to_json) %>'></span>
   </div>
 </main>
