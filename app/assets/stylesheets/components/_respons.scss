@@ -1,0 +1,116 @@
+@media screen and (max-width: 480px) {
+
+  // .search {
+  //   display: none;
+  // }
+  // NAVBAR RESPONSIVE
+  .navbar-lewagon .navbar-brand img {
+    width: 4em;
+  }
+
+  .dropdown {
+    display: block;
+  }
+
+  .banner-home {
+    padding: 15px 0 !important;
+  }
+
+  .search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: transform 0.5s ease-in-out;
+
+    .searchbtn {
+      margin: 0 20px 0 20px;
+      width: 40px;
+      height: 40px;
+    }
+
+    form {
+      width: 60%;
+    }
+  }
+
+  // LOGIN RESPONSIVE
+  .device-margin-log-in {
+    flex-direction: column;
+    margin-top: 70px;
+  }
+
+  .log-in {
+    flex-direction: column;
+    width: 80%;
+    height: 100%;
+
+    .form-control {
+      width: 100%;
+    }
+  }
+
+  .new-new {
+    flex-direction: column;
+
+  }
+
+  .add-poke {
+    flex-direction: column;
+    margin-top: 70px;
+    height: 44em;
+    width: 20em;
+  }
+
+  .more-info {
+    width: 100%;
+  }
+
+  // Show pokemon
+  .pokemon-show {
+
+    flex-direction: column;
+
+
+    &-stats-wrapper {
+      perspective: inherit !important;
+      transform: rotateX(0deg) rotateY(0deg);
+      width: 27rem!important;
+    }
+
+    &-booking {
+      perspective: inherit !important;
+      transform: rotateX(0deg) rotateY(0deg);
+      justify-content: center;
+      align-items: center;
+    }
+
+    &-img img {
+      width: 20rem!important;
+      height: 20rem!important;
+    }
+  }
+
+}
+
+@media screen and (max-width: 1080px) {
+
+  //pokemon show
+  .pokemon-show {
+
+    flex-direction: column;
+
+
+    &-stats-wrapper {
+      perspective: inherit !important;
+      transform: rotateX(0deg) rotateY(0deg);
+    }
+
+    &-booking {
+      perspective: inherit !important;
+      transform: rotateX(0deg) rotateY(0deg);
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}

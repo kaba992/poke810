@@ -37,7 +37,7 @@ const transAnim = bodymovin.loadAnimation({
 
 window.onload = () => {
 
-transition.classList.add('is-active');
+  transition.classList.add('is-active');
 
 
   transAnim.goToAndPlay(0, true)
@@ -54,7 +54,7 @@ transition.classList.add('is-active');
 document.addEventListener("turbolinks:load", () => {
 
   $('.js-example-basic-single').select2();
-
+  // Animation barre recherche
   const btnSearch = document.querySelector(".searchbtn");
   const input = document.querySelector(".zone-text");
 
@@ -68,8 +68,21 @@ document.addEventListener("turbolinks:load", () => {
       input.classList.remove("active");
     }
   });
-  
-  // animation sho pokemon
+
+  // Animation login et sign-up
+  const translog = document.querySelector('.anim-log');
+
+  const transAnim = bodymovin.loadAnimation({
+    wrapper: translog,
+    animType: 'svg',
+    loop: true,
+    autoplay: true,
+    path: 'https://assets8.lottiefiles.com/packages/lf20_yobtveoj.json',
+    preserveAspectRatio: 'xMidYMid meet',
+
+  });
+
+  // animation show pokemon
   const pokemon = document.querySelector(".pokemon-show-img");
   const pokeball = document.querySelector(".pokeball");
   const TLshow = gsap.timeline()
@@ -115,45 +128,45 @@ document.addEventListener("turbolinks:load", () => {
     // spaceBetween: 30,
     grabCursor: true,
     loop: false,
-    // breakpoints: {
-    //   // when window width is >= 600px
-    //   600: {
-    //     slidesPerView: 2,
-    //     slidesPerGroup: 2,
-    //     spaceBetween: 60,
-    //     grabCursor: true,
-    //     loop: true,
-    //     centeredSlides: true
+    breakpoints: {
+      // when window width is >= 600px
+      300: {
+        slidesPerView: 1,
+        slidesPerGroup: 1,
+        grabCursor: true,
+        loop: false,
+        centeredSlides: true
 
-    //   },
-    //   // when window width is >= 900px
-    //   900: {
-    //     slidesPerView: 3,
-    //     slidesPerGroup: 3,
-    //     grabCursor: true,
-    //     loop: true,
-    //     speed: 1500,
-    //     spaceBetween: 5,
-    //     centeredSlides: false
+      },
+      // when window width is >= 900px
+      700: {
+        slidesPerView: 2,
+        slidesPerGroup: 1,
+        grabCursor: true,
+        loop: false,
+        centeredSlides: false
 
-    //   },
-    //   // when window width is >= 1200px
-    //   1200: {
-    //     slidesPerView: 8,
-    //     slidesPerGroup: 4,
-    //     grabCursor: true,
-    //     loop: true,
-    //     spaceBetween: 5,
-    //     centeredSlides: false
-    //   },
+      },
+      // when window width is >= 1200px
+      900: {
+        slidesPerView: 3,
+        slidesPerGroup: 2,
+        grabCursor: true,
+        loop: false,
+        spaceBetween: 5,
+        centeredSlides: false
+      },
 
-    //   // when window width is >= 1500px
-
-    // }
+      // when window width is >= 1500px
+      1500: {
+        slidesPerView: 5,
+        slidesPerGroup: 2,
+        grabCursor: true,
+        loop: false,
+        spaceBetween: 5,
+        centeredSlides: false
+      },
+    }
   });
-
-
-
-
 
 });
