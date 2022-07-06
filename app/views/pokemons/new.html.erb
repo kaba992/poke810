@@ -1,16 +1,14 @@
-<main data-barba="container" data-barba-namespace="new">
-  <div class="container-fluid">
-    <div class = "new-new">
-      <div class="add-poke">
+<main data-barba="container" data-barba-namespace="new" style = "height: 100%">
+  <div class="device-margin-log-in">
+    <div class="add-poke">
+      <%= simple_form_for(@pokemon) do |f| %>
         <h1>Add a pokemon</h1>
-        <%= simple_form_for(@pokemon) do |f| %>
-        <%= f.input :id, as: :select, label: 'Pokemon', collection: @pokemons.order(:name), prompt: "Choose a pokemon", input_html: {class: "js-example-basic-single"} %>
+        <%= f.input :id, as: :select, label: 'Pokemon', collection: @pokemons.order(:name), prompt: "Choose a pokemon", input_html: {class: "js-example-basic-single"}, class: "form-control" %>
         <%= f.input :description%>
         <%= f.input :price %>
         <%= f.submit "Confirm your new pokemon", class: "more_info" %>
-        <% end %>
-      </div>
-      <div class="image-new">
+      <% end %>
+      <div class="anim-log">
       </div>
     </div>
   </div>

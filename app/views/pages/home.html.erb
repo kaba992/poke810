@@ -4,151 +4,163 @@
   </div>
   <div class="container-fluid">
     <h3>The most popular</h3>
-    <div class="cards-home">
+    <div class="cards-home swiper-container">
       <% pokemon_asked = @pokemons.order(id: :desc).limit(5) %>
-      <% pokemon_asked.each do |pokemon| %>
-        <div class='pokemon-card'>
-          <div class="pokemon-img">
-            <%=image_tag pokemon.image_url, alt: pokemon.name if pokemon.image_url != nil%>
-          </div>
-          <div class='pokemon-infos'>
-            <h2 class='text-center font-weight-bold name'><%= pokemon.name %></h2>
-            <div class='barre-home'><label for="determinate">HP:&nbsp; </label><progress id="determinate"  value="<%=pokemon.hp%>" min="0" max="155"> 50% </progress>
+      <div class="swiper-wrapper">
+        <% pokemon_asked.each do |pokemon| %>
+          <div class="swiper-slide">
+            <div class='pokemon-card'>
+              <div class="pokemon-img">
+                <%=image_tag pokemon.image_url, alt: pokemon.name if pokemon.image_url != nil%>
+              </div>
+              <div class='pokemon-infos'>
+                <h2 class='text-center font-weight-bold name'><%= pokemon.name %></h2>
+                <div class='barre-home'><label for="determinate">HP:&nbsp; </label><progress id="determinate"  value="<%=pokemon.hp%>" min="0" max="155"> 50% </progress>
+                </div>
+              </div>
+              <div class="pokemon-stats-wrapper">
+                <div class="pokemon-stats pokemon-stats--types">
+                  <p><%=pokemon.types.gsub(/[^0-9a-z ]/i, '').split.join(' | ').titleize %></p>
+                  <p class="font-weight-bold">Type</p>
+                </div>
+                <span class="wrapper-vertical"></span>
+                <div class="pokemon-stats pokemon-stats--attack">
+                  <p><%= pokemon.attack %></p>
+                  <p class="font-weight-bold">Attack</p>
+                </div>
+                <span class="wrapper-vertical"></span>
+                <div class="pokemon-stats pokemon-stats--def">
+                  <p><%= pokemon.defense %></p>
+                  <p class="font-weight-bold">Def</p>
+                </div>
+                <span class="wrapper-vertical"></span>
+                <div class="pokemon-stats pokemon-stats--speed">
+                  <p><%= pokemon.speed %></p>
+                  <p class="font-weight-bold">Speed</p>
+                </div>
+              </div>
+              <div class="wrapper-horizontal">
+              </div>
+              <div class="pokemon-stats pokemon-stats--abilities">
+                <p class="font-weight-bold">Abilities</p>
+                <p><%=pokemon.abilities.gsub(/[^0-9a-z ]/i, '').split.join(' | ').titleize %></p>
+              </div>
+              <div class="footer">
+                <p class='font-weight-bold'><%= pokemon.price %> € / day</p>
+              </div>
+              <%= link_to pokemon_path(pokemon) do %>
+                <div class="more_info more_info-home">More info
+                </div>
+              <% end%>
             </div>
           </div>
-          <div class="pokemon-stats-wrapper">
-            <div class="pokemon-stats pokemon-stats--types">
-              <p><%=pokemon.types.gsub(/[^0-9a-z ]/i, '').split.join(' | ').titleize %></p>
-              <p class="font-weight-bold">Type</p>
-            </div>
-            <span class="wrapper-vertical"></span>
-            <div class="pokemon-stats pokemon-stats--attack">
-              <p><%= pokemon.attack %></p>
-              <p class="font-weight-bold">Attack</p>
-            </div>
-            <span class="wrapper-vertical"></span>
-            <div class="pokemon-stats pokemon-stats--def">
-              <p><%= pokemon.defense %></p>
-              <p class="font-weight-bold">Def</p>
-            </div>
-            <span class="wrapper-vertical"></span>
-            <div class="pokemon-stats pokemon-stats--speed">
-              <p><%= pokemon.speed %></p>
-              <p class="font-weight-bold">Speed</p>
-            </div>
-          </div>
-          <div class="wrapper-horizontal">
-          </div>
-          <div class="pokemon-stats pokemon-stats--abilities">
-            <p class="font-weight-bold">Abilities</p>
-            <p><%=pokemon.abilities.gsub(/[^0-9a-z ]/i, '').split.join(' | ').titleize %></p>
-          </div>
-          <div class="footer">
-            <p class='font-weight-bold'><%= pokemon.price %> € / day</p>
-          </div>
-          <%= link_to pokemon_path(pokemon) do %>
-            <div class="more_info more_info-home">More info
-            </div>
-          <% end%>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
     <h3>The most powerfull</h3>
-    <div class='cards-home'>
+    <div class='cards-home swiper-container'>
       <%pokemon_powerful = @pokemons.order(attack: :desc).limit(5)%>
-      <% pokemon_powerful.each do |pokemon| %>
-        <div class='pokemon-card'>
-          <div class="pokemon-img">
-            <%=image_tag pokemon.image_url, alt: pokemon.name if pokemon.image_url != nil%>
-          </div>
-          <div class='pokemon-infos'>
-            <h2 class='text-center font-weight-bold name'><%= pokemon.name %></h2>
-            <div class='barre-home'><label for="determinate">HP:&nbsp; </label><progress id="determinate"  value="<%=pokemon.hp%>" min="0" max="155"> 50% </progress>
+      <div class="swiper-wrapper">
+        <% pokemon_powerful.each do |pokemon| %>
+          <div class="swiper-slide">
+            <div class='pokemon-card'>
+              <div class="pokemon-img">
+                <%=image_tag pokemon.image_url, alt: pokemon.name if pokemon.image_url != nil%>
+              </div>
+              <div class='pokemon-infos'>
+                <h2 class='text-center font-weight-bold name'><%= pokemon.name %></h2>
+                <div class='barre-home'><label for="determinate">HP:&nbsp; </label><progress id="determinate"  value="<%=pokemon.hp%>" min="0" max="155"> 50% </progress>
+                </div>
+              </div>
+              <div class="pokemon-stats-wrapper">
+                <div class="pokemon-stats pokemon-stats--types">
+                  <p><%=pokemon.types.gsub(/[^0-9a-z ]/i, '').split.join(' | ').titleize %></p>
+                  <p class="font-weight-bold">Type</p>
+                </div>
+                <span class="wrapper-vertical"></span>
+                <div class="pokemon-stats pokemon-stats--attack">
+                  <p><%= pokemon.attack %></p>
+                  <p class="font-weight-bold">Attack</p>
+                </div>
+                <span class="wrapper-vertical"></span>
+                <div class="pokemon-stats pokemon-stats--def">
+                  <p><%= pokemon.defense %></p>
+                  <p class="font-weight-bold">Def</p>
+                </div>
+                <span class="wrapper-vertical"></span>
+                <div class="pokemon-stats pokemon-stats--speed">
+                  <p><%= pokemon.speed %></p>
+                  <p class="font-weight-bold">Speed</p>
+                </div>
+              </div>
+              <div class="wrapper-horizontal">
+              </div>
+              <div class="pokemon-stats pokemon-stats--abilities">
+                <p class="font-weight-bold">Abilities</p>
+                <p><%=pokemon.abilities.gsub(/[^0-9a-z ]/i, '').split.join(' | ').titleize %></p>
+              </div>
+              <div class="footer">
+                <p><strong><%= pokemon.price %> € / day</strong></p>
+              </div>
+              <%= link_to pokemon_path(pokemon) do %>
+                <div class="more_info more_info-home">More info</div>
+              <% end%>
             </div>
           </div>
-          <div class="pokemon-stats-wrapper">
-            <div class="pokemon-stats pokemon-stats--types">
-              <p><%=pokemon.types.gsub(/[^0-9a-z ]/i, '').split.join(' | ').titleize %></p>
-              <p class="font-weight-bold">Type</p>
-            </div>
-            <span class="wrapper-vertical"></span>
-            <div class="pokemon-stats pokemon-stats--attack">
-              <p><%= pokemon.attack %></p>
-              <p class="font-weight-bold">Attack</p>
-            </div>
-            <span class="wrapper-vertical"></span>
-            <div class="pokemon-stats pokemon-stats--def">
-              <p><%= pokemon.defense %></p>
-              <p class="font-weight-bold">Def</p>
-            </div>
-            <span class="wrapper-vertical"></span>
-            <div class="pokemon-stats pokemon-stats--speed">
-              <p><%= pokemon.speed %></p>
-              <p class="font-weight-bold">Speed</p>
-            </div>
-          </div>
-          <div class="wrapper-horizontal">
-          </div>
-          <div class="pokemon-stats pokemon-stats--abilities">
-            <p class="font-weight-bold">Abilities</p>
-            <p><%=pokemon.abilities.gsub(/[^0-9a-z ]/i, '').split.join(' | ').titleize %></p>
-          </div>
-          <div class="footer">
-            <p><strong><%= pokemon.price %> € / day</strong></p>
-          </div>
-          <%= link_to pokemon_path(pokemon) do %>
-            <div class="more_info more_info-home">More info</div>
-          <% end%>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
     <h3>The most attractive</h3>
-    <div class="cards-home">
+    <div class="cards-home swiper-container">
       <%pokemon_cheaper = @pokemons.order(:price).limit(5)%>
-      <% pokemon_cheaper.each do |pokemon| %>
-        <div class='pokemon-card'>
-          <div class="pokemon-img">
-            <%=image_tag pokemon.image_url, alt: pokemon.name if pokemon.image_url != nil%>
-          </div>
-          <div class='pokemon-infos'>
-            <h2 class='text-center font-weight-bold name'><%= pokemon.name %></h2>
-            <div class='barre-home'><label for="determinate">HP:&nbsp; </label><progress id="determinate"  value="<%=pokemon.hp%>" min="0" max="155"> 50% </progress>
+      <div class="swiper-wrapper">
+        <% pokemon_cheaper.each do |pokemon| %>
+          <div class="swiper-slide">
+            <div class='pokemon-card'>
+              <div class="pokemon-img">
+                <%=image_tag pokemon.image_url, alt: pokemon.name if pokemon.image_url != nil%>
+              </div>
+              <div class='pokemon-infos'>
+                <h2 class='text-center font-weight-bold name'><%= pokemon.name %></h2>
+                <div class='barre-home'><label for="determinate">HP:&nbsp; </label><progress id="determinate"  value="<%=pokemon.hp%>" min="0" max="155"> 50% </progress>
+                </div>
+              </div>
+              <div class="pokemon-stats-wrapper">
+                <div class="pokemon-stats pokemon-stats--types">
+                  <p><%=pokemon.types.gsub(/[^0-9a-z ]/i, '').split.join(' | ').titleize %></p>
+                  <p class="font-weight-bold">Type</p>
+                </div>
+                <span class="wrapper-vertical"></span>
+                <div class="pokemon-stats pokemon-stats--attack">
+                  <p><%= pokemon.attack %></p>
+                  <p class="font-weight-bold">Attack</p>
+                </div>
+                <span class="wrapper-vertical"></span>
+                <div class="pokemon-stats pokemon-stats--def">
+                  <p><%= pokemon.defense %></p>
+                  <p class="font-weight-bold">Def</p>
+                </div>
+                <span class="wrapper-vertical"></span>
+                <div class="pokemon-stats pokemon-stats--speed">
+                  <p><%= pokemon.speed %></p>
+                  <p class="font-weight-bold">Speed</p>
+                </div>
+              </div>
+              <div class="wrapper-horizontal"></div>
+              <div class="pokemon-stats pokemon-stats--abilities">
+                <p class="font-weight-bold">Abilities</p>
+                <p><%=pokemon.abilities.gsub(/[^0-9a-z ]/i, '').split.join(' | ').titleize %></p>
+              </div>
+              <div class="footer">
+                <p><strong><%= pokemon.price %> € / day</strong></p>
+              </div>
+              <%= link_to pokemon_path(pokemon) do %>
+                <div class="more_info more_info-home">More info</div>
+              <% end%>
             </div>
           </div>
-          <div class="pokemon-stats-wrapper">
-            <div class="pokemon-stats pokemon-stats--types">
-              <p><%=pokemon.types.gsub(/[^0-9a-z ]/i, '').split.join(' | ').titleize %></p>
-              <p class="font-weight-bold">Type</p>
-            </div>
-            <span class="wrapper-vertical"></span>
-            <div class="pokemon-stats pokemon-stats--attack">
-              <p><%= pokemon.attack %></p>
-              <p class="font-weight-bold">Attack</p>
-            </div>
-            <span class="wrapper-vertical"></span>
-            <div class="pokemon-stats pokemon-stats--def">
-              <p><%= pokemon.defense %></p>
-              <p class="font-weight-bold">Def</p>
-            </div>
-            <span class="wrapper-vertical"></span>
-            <div class="pokemon-stats pokemon-stats--speed">
-              <p><%= pokemon.speed %></p>
-              <p class="font-weight-bold">Speed</p>
-            </div>
-          </div>
-          <div class="wrapper-horizontal"></div>
-          <div class="pokemon-stats pokemon-stats--abilities">
-            <p class="font-weight-bold">Abilities</p>
-            <p><%=pokemon.abilities.gsub(/[^0-9a-z ]/i, '').split.join(' | ').titleize %></p>
-          </div>
-          <div class="footer">
-            <p><strong><%= pokemon.price %> € / day</strong></p>
-          </div>
-          <%= link_to pokemon_path(pokemon) do %>
-            <div class="more_info more_info-home">More info</div>
-          <% end%>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
