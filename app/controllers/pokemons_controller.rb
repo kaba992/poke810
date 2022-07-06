@@ -35,6 +35,7 @@ class PokemonsController < ApplicationController
     if @pokemon.save
       redirect_to pokemon_path(@pokemon)
     else
+      @pokemons = Pokemonbase.all
       render :new
     end
   end
