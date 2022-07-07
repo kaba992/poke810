@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
+
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: user_params)
     devise_parameter_sanitizer.permit(:account_update, keys: user_params)
@@ -11,4 +12,5 @@ class ApplicationController < ActionController::Base
   def user_params
     %i[username city address phone_number email].freeze
   end
+
 end
