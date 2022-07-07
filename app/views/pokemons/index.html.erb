@@ -6,7 +6,7 @@
     <div class="index">
       <div class="cards-index">
         <% @pokemons.each do |pokemon| %>
-          <% if current_user.id != pokemon.user_id %>
+          <%# if current_user.id != pokemon.user_id %>
             <div class='pokemon-card'>
               <div class="pokemon-img">
                 <%=image_tag pokemon.image_url, alt: pokemon.name if pokemon.image_url != nil%>
@@ -50,7 +50,7 @@
                 <div class="more_info more_info-home">More info</div>
               <% end%>
             </div>
-          <% end %>
+          <%# end %>
         <% end %>
       </div>
     </div>

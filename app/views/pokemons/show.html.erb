@@ -51,7 +51,7 @@
         <%= image_tag @pokemon.image_url, alt: @pokemon.name %>
       </div>
       <div class="pokemon-show-booking">
-        <%if current_user.id != @pokemon.user_id%>
+        <%# if current_user.id != @pokemon.user_id%>
           <%= simple_form_for [ @pokemon, @booking ] do |f| %>
             <%= f.input :start_date, as: :string, input_html: { id: 'start_date' } %>
             <%= f.input :end_date, as: :string, input_html: { id: 'end_date' }%>
@@ -67,7 +67,7 @@
             </tr>
             </div>
           <% end %>
-        <%end%>
+        <%# end%>
       </div>
     </div>
 
